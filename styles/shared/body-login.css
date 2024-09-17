@@ -41,7 +41,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    transition: height .2s ease;
+}
+
+.main.aktif{
+    margin-top: 150px;
+    height: 520px;
 }
 
 .main .form-box{
@@ -49,8 +54,18 @@ body{
     padding: 40px;
 }
 
+/*.main .form-box.login{
+    display: none;
+}*/
+
 .form-box h1 {
     text-align: center;
+}
+
+.main .form-box.register{
+    
+    position: absolute;
+    transform: translateX(400px);
 }
 
 .input-box {
@@ -97,3 +112,4 @@ body{
     display: flex;
     justify-content: space-between;
 }
+

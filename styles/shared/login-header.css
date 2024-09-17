@@ -55,6 +55,26 @@ header {
     transform: scaleX(1);
 }
 
+.popUp-reg{
+    width: 130px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    margin-left: 40px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    transition: .5s;
+}
+
+.popUp-reg:hover {
+    background: white;
+    color: black;
+}
+
 .popUp-login{
     width: 130px;
     height: 50px;

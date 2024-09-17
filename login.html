@@ -21,7 +21,11 @@
         <a href="#">Contact</a>
        
     </nav>
-    <button class="popUp-login"> Sign up</button>
+    
+    <a href="#" class="reg-link">
+        <button class="popUp-reg">Sign up</button>
+    </a>
+    
    </header>
 
     <div class="main">
@@ -53,12 +57,49 @@
             </form>
         </div>
 
+        <div class="form-box register">
+            <h1>SIGN-UP</h1>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" placeholder="username" required>
+                    <label>username</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="school"></ion-icon></ion-icon></span>
+                    <input type="text" placeholder="NIM" required>
+                    <label>NIM</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="text" placeholder="Email" required>
+                    <label>Email</label>
+                </div>
+
+               
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="password" required>
+                    <label>password</label>
+                </div>
+
+                <div class="inget-pass">
+                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                   
+                </div>
+                
+                
+                <button type="submit" class="tombol-submit">Sign-Up</button>
+            </form>
+        </div>
         
     </div>
 
 
 
-    <script></script>
+    <script src="scripts/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
