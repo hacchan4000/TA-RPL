@@ -27,3 +27,4 @@ registerLink.addEventListener('click', (event) => {
         registerLink.classList.remove('reg-link');
     }
 });
+
