@@ -42,6 +42,7 @@ body{
     justify-content: center;
     align-items: center;
     transition: height .2s ease;
+    overflow: hidden;
 }
 
 .main.aktif{
@@ -54,9 +55,25 @@ body{
     padding: 40px;
 }
 
-/*.main .form-box.login{
-    display: none;
-}*/
+.main .form-box.login{
+    transition: transform .20s ease;
+    transform: translateX(0);
+}
+.main.aktif .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+
+
+.main .form-box.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(-400px);
+}
+.main.aktif .form-box.register{
+    transition: transform .20s ease;;
+    transform: translateX(0);
+}
 
 .form-box h1 {
     text-align: center;
