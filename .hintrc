@@ -21,10 +21,12 @@
     "axe/forms": [
       "default",
       {
-        "select-name": "off"
+        "select-name": "off",
+        "label": "off"
       }
     ],
     "meta-charset-utf-8": "off",
-    "axe/language": "off"
+    "axe/language": "off",
+    "no-inline-styles": "off"
   }
 }

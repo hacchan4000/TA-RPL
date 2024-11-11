@@ -16,7 +16,6 @@ if (mysqli_connect_error()) {
     $SELECT ="SELECT NIM from record Where NIM = ? Limit 1";
     $INSERT .= "INSERT Into record (username,nim,email,pass) values(?,?,?,?)";
 
-    
+
 }
 
-?>
