@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
+    <!-- dibawah ini dua file buat css -->
     <link rel="stylesheet" href="styles/shared/login-header.css">
     <link rel="stylesheet" href="styles/shared/body-login.css">
 
@@ -23,18 +23,20 @@
        
     </nav>
     
-    <a href="#" class="reg-link">
+    <a href="#" class="reg-link"> <!-- This is a comment -->
         <button class="popUp-reg">Sign up</button>
     </a>
     
    </header>
 
+    <!-- berikut komponen" utama di halaman login mulai dari kotak/container login dan sign up -->
+    <!-- inget div itu kaya bungkus, jd setiap kita mau bikin objek baru dalam web kita bungkus dengan div dlu trs div tsbt dikasi atribut class biar bsa kita edit" di css -->
     <div class="main">
 
-    
+        <!-- container kotak login -->
         <div class="form-box login">
             <h1>LOGIN</h1>
-            <form action="main-menu.html" method="get">
+            <form action="main-menu.html" method="GET"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
                     <input type="text" placeholder="" required>
@@ -57,10 +59,10 @@
                 <button type="submit" class="tombol-submit">Login</button>
             </form>
         </div>
-
+        <!-- container kotak sign-up -->
         <div class="form-box register">
             <h1>SIGN-UP</h1>
-            <form action="#">
+            <form action="database/insert.php" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
                     <input type="text" placeholder="username" required name="username">
@@ -106,3 +108,5 @@
 
 </body>
 </html>
+
+
