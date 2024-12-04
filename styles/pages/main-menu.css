@@ -21,6 +21,16 @@ header {
     background-color: rgba(0, 0, 0, 0.778);
     
 }
+
+.profil {
+    position: absolute; /* Allow precise positioning */
+    top: 20px; /* Adjust the vertical position */
+    right: 20px; /* Adjust the horizontal position */
+    color: white; /* Ensure the text/icon is visible */
+    font-size: 1.5em; /* Adjust the size if necessary */
+    text-decoration: none; /* Remove underline from the link */
+    z-index: 100; /* Ensure it appears above other elements */
+}
 .navigasi-mm{
     position: relative;
     font-size: 1.1em;
