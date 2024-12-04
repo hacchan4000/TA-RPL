@@ -18,7 +18,7 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
     if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
         die("Connect Error ('".mysqli_connect_errno()."'): ".mysqli_connect_error());//klo error bakal nunjukin pesan error
     }else { //kalo gaad error bakal di update tabel mahasiswa di db nya
-        $SELECT ="SELECT Nim FROM mahasiwa WHERE Nim = ? LIMIT 1"; //variabel SELECT bakal nyimpen query untuk milih kolom Nim dari tabel mahasiswa dimana nim hrs ber jmlh 1
+        $SELECT ="SELECT Nim FROM mahasiswa WHERE Nim = ? LIMIT 1"; //variabel SELECT bakal nyimpen query untuk milih kolom Nim dari tabel mahasiswa dimana nim hrs ber jmlh 1
         $INSERT = "INSERT INTO mahasiswa (Username,Nim,Email,Pass) VALUES(?,?,?,?)"; // masukkan values ke tabel mahasiswa
 
         //prepare statement buat query select
