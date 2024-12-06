@@ -44,7 +44,7 @@ header {
     height: 3px;
     left: 0;
     bottom: -6px;
-    background: white;
+    background: black;
     border-radius: 5px;
     transform-origin: right;
     transform: scaleX(0);
@@ -72,8 +72,8 @@ header {
 }
 
 .popUp-reg:hover {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
 }
 
 .popUp-login{
