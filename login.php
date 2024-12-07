@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- dibawah ini dua file buat css -->
+    <link rel="stylesheet" href="styles/shared/login-header.css">
+    <link rel="stylesheet" href="styles/shared/body-login.css">
+
+    
+    
+</head>
+
+<body>
+   <header>
+    <img class="logo-unud" src="gambar/background/newUnud.jpg" alt="">
+    <nav class="navigasi">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        
+       
+    </nav>
+    
+    <a href="#" class="reg-link"> <!-- This is a comment -->
+        <button class="popUp-reg">Sign up</button>
+    </a>
+    
+   </header>
+
+    <!-- berikut komponen" utama di halaman login mulai dari kotak/container login dan sign up -->
+    <!-- inget div itu kaya bungkus, jd setiap kita mau bikin objek baru dalam web kita bungkus dengan div dlu trs div tsbt dikasi atribut class biar bsa kita edit" di css -->
+    <div class="main">
+
+        <!-- container kotak login -->
+        <div class="form-box login">
+            <h1>LOGIN</h1>
+            <form action="main-menu.html" method="GET"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" placeholder="" required>
+                    <label>NIM</label>
+                </div>
+
+               
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="" required>
+                    <label>password</label>
+                </div>
+
+                <div class="passL-salah">
+                    <p>password atau username salah</p>
+                </div>
+
+                <div class="inget-pass">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#"> forgot password?</a>
+                </div>
+                
+                
+                <button type="submit" class="tombol-submit">Login</button>
+            </form>
+        </div>
+        <!-- container kotak sign-up -->
+        <div class="form-box register">
+            <h1>SIGN-UP</h1>
+            <form action="database/insert.php" method="POST">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" placeholder="" required name="username">
+                    <label>username</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="school"></ion-icon></ion-icon></span>
+                    <input type="text" placeholder="" required name="NIM">
+                    <label>NIM</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="text" placeholder="" required name="Email">
+                    <label>Email</label>
+                </div>
+
+               
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="" required name="password">
+                    <label>password</label>
+                </div>
+                <div class="terdaftar">
+                    <p><?php echo $_GET['error']; ?></p>
+                </div>
+
+                <div class="inget-pass">
+                    <label><input type="checkbox" required> I agree to the terms & conditions</label>
+                </div>
+
+                <button type="submit" class="tombol-submit" >Sign-Up</button>
+            </form>
+        </div>
+        
+    </div>
+
+
+
+    <script src="scripts/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
+
+

@@ -1,5 +1,5 @@
 <?php
-//KENAPA GABISA KUONTOLLLLLLLLLLLL
+
 $username = $_POST['username'];
 $nim = $_POST['NIM'];
 $email = $_POST['Email'];
@@ -11,7 +11,7 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
     $port = 3308;
     $dbUsername = "root";
     $dbPass = "";
-    $dbName = "MONITA";
+    $dbName = "MONITA"; //nama database
 
     $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
 
@@ -35,15 +35,20 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
             $stmt = $conn->prepare($INSERT);
             $stmt->bind_param("ssss",$username, $nim, $email, $pass);
             $stmt->execute();
-            echo "record baru berhasil dimasukkan";
+
+            $berhasil ="Sign Up berhasil";
+            header("../Location: login.php?error=$berhasil");
         } else {
+            $terdaftar ="Nim tersebut sudah terdaftar";
+            header("../Location: login.php?error=$terdaftar");
+
             echo "Nim tersebut sudah terdaftar";
         }
         $stmt->close();
         $conn->close();
     }
 } else {
-    echo "Masukan semua data";
+    echo "Data belum lengkap";
     die();
 }
 ?>
