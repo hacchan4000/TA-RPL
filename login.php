@@ -37,7 +37,7 @@
         <!-- container kotak login -->
         <div class="form-box login">
             <h1>LOGIN</h1>
-            <form action="main-menu.html" method="GET"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
+            <form action="database/check.php" method="GET"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
                     <input type="text" placeholder="" required>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="passL-salah">
-                    <p>password atau username salah</p>
+                    <p><?php if (isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?></p>
                 </div>
 
                 <div class="inget-pass">
@@ -92,9 +92,7 @@
                     <input type="password" placeholder="" required name="password">
                     <label>password</label>
                 </div>
-                <div class="terdaftar">
-                    <p><?php echo $_GET['error']; ?></p>
-                </div>
+                
 
                 <div class="inget-pass">
                     <label><input type="checkbox" required> I agree to the terms & conditions</label>

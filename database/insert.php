@@ -18,6 +18,9 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
     if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
         die("Connect Error ('".mysqli_connect_errno()."'): ".mysqli_connect_error());//klo error bakal nunjukin pesan error
     }else { //kalo gaad error bakal di update tabel mahasiswa di db nya
+        //enkripsi password
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+
         $SELECT ="SELECT Nim FROM mahasiswa WHERE Nim = ? LIMIT 1"; //variabel SELECT bakal nyimpen query untuk milih kolom Nim dari tabel mahasiswa dimana nim hrs ber jmlh 1
         $INSERT = "INSERT INTO mahasiswa (Username,Nim,Email,Pass) VALUES(?,?,?,?)"; // masukkan values ke tabel mahasiswa
 
@@ -36,13 +39,13 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
             $stmt->bind_param("ssss",$username, $nim, $email, $pass);
             $stmt->execute();
 
-            $berhasil ="Sign Up berhasil";
-            header("../Location: login.php?error=$berhasil");
+            $berhasil ="Sign Up berhasil, Silahkan login";
+            header("Location: ../login.php?error=$berhasil");
         } else {
             $terdaftar ="Nim tersebut sudah terdaftar";
-            header("../Location: login.php?error=$terdaftar");
+            header("Location: ../login.php?error=$terdaftar");
 
-            echo "Nim tersebut sudah terdaftar";
+            echo "Nim yang barusan diinput sudah terdaftar";
         }
         $stmt->close();
         $conn->close();

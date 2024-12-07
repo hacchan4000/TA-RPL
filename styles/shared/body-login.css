@@ -38,17 +38,13 @@ body{
     border-radius: 10px;
     padding: 10px;
     color: white;
+    opacity: 1; /* Initially visible */
+    transition: opacity 1s ease;
 }
 
-.terdaftar{
-    height: 50px;
-    width: 355px;
-    background-color: rgb(244, 121, 121);
-    align-items: center;
-    justify-self: center;
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
+.passL-salah.hidden {
+    opacity: 0; /* Fully transparent */
+    visibility: hidden; /* Prevents interaction when faded out */
 }
 
 .main{
