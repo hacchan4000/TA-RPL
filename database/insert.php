@@ -1,5 +1,5 @@
 <?php
-
+// kode di bawah gunanya masukkan/upload data dr sign up ke database
 $username = $_POST['username'];
 $nim = $_POST['NIM'];
 $email = $_POST['Email'];
@@ -45,7 +45,7 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
             $terdaftar ="Nim tersebut sudah terdaftar";
             header("Location: ../login.php?error=$terdaftar");
 
-            echo "Nim yang barusan diinput sudah terdaftar";
+           
         }
         $stmt->close();
         $conn->close();

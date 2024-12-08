@@ -37,17 +37,17 @@
         <!-- container kotak login -->
         <div class="form-box login">
             <h1>LOGIN</h1>
-            <form action="database/check.php" method="GET"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
+            <form action="database/check.php" method="POST"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <input type="text" placeholder="" required>
+                    <input type="text" placeholder="" required name="myNim">
                     <label>NIM</label>
                 </div>
 
                
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" placeholder="" required>
+                    <input type="password" placeholder="" required name="myPassword">
                     <label>password</label>
                 </div>
 
@@ -64,6 +64,9 @@
                 <button type="submit" class="tombol-submit">Login</button>
             </form>
         </div>
+
+
+
         <!-- container kotak sign-up -->
         <div class="form-box register">
             <h1>SIGN-UP</h1>

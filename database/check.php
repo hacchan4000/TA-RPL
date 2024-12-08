@@ -1,9 +1,9 @@
 <?php
-session_start();
+session_start(); //session itu gunna untuk nyimpen data
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nim = $_POST['NIM'];
-    $pass = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === "POST") { //
+    $nim = $_POST['myNim'];
+    $pass = $_POST['myPassword'];
 
     if (!empty($nim) && !empty($pass)) {
         $host = "localhost";
@@ -32,29 +32,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     session_regenerate_id(true);
                     $_SESSION['Nim'] = $data['Nim'];
                     $_SESSION['Username'] = $data['Username'];
+                    header("Location: ../main-menu.php");
 
                     $stmt->close();
                     $conn->close();
-                    header("Location: main-menu.php");
+                    
                     exit();
                 } else {
                     $errorMessage = "Password atau NIM salah.";
-                    header("Location: login.php?error=" . urlencode($errorMessage));
+                    header("Location: ../login.php?error=$errorMessage");
                     exit();
                 }
             } else {
                 $errorMessage = "Akun tidak ditemukan.";
-                header("Location: login.php?error=" . urlencode($errorMessage));
+                //header("Location: login.php?error=" . urlencode($errorMessage));
+                header("Location: ../login.php?error=$errorMessage");
                 exit();
             }
         }
     } else {
         $errorMessage = "Harap masukkan NIM dan password.";
-        header("Location: login.php?error=" . urlencode($errorMessage));
+        //header("Location: login.php?error=" . urlencode($errorMessage));
+        header("Location: ../main-menu.php");
         exit();
     }
 } else {
-    header("Location: login.php");
+    //header("Location: login.php");
+    header("Location: ../main-menu.php");
     exit();
 }
 ?>
