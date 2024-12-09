@@ -51,8 +51,8 @@
                     <label>password</label>
                 </div>
 
-                <div class="passL-salah">
-                    <p><?php if (isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?></p>
+                <div class="error-box" style="font-weight: bold;">
+                    <p ><?php if (isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?></p>
                 </div>
 
                 <div class="inget-pass">
