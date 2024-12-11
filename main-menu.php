@@ -27,7 +27,7 @@
         <nav class="navigasi-mm">
             <a href="pengumpulan.html">PENGUMPULAN TA</a>
             <a href="status.html">STATUS TA</a>
-            <a href="notif.html">NOTIFICATION</a>
+            <a href="notif.php">NOTIFICATION</a>
             <a href="#">CONTACTS</a>
             
         </nav>
