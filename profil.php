@@ -3,7 +3,63 @@ session_start();
 if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     $username = $_SESSION['Username'];
     $nim = $_SESSION['Nim'];
+
+    // Database connection
+    $host = "localhost";
+    $port = 3308; // Use your MySQL port
+    $dbUsername = "root";
+    $dbPass = "";
+    $dbName = "MONITA"; // Your database name
+
+    $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query Biodata table to fetch data for this user
+    $stmt = $conn->prepare("SELECT gambar, telpon, alamat, fakultas, jurusan, semester, dosbing FROM Biodata WHERE Nim = ?");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $gambar = $row['gambar'];
+        $telpon = $row['telpon'];
+        $alamat = $row['alamat'];
+        $fakultas = $row['fakultas'];
+        $jurusan = $row['jurusan'];
+        $semester = $row['semester'];
+        $dosbing = $row['dosbing'];
+    } else {
+        $gambar = "default.png"; // Use a default image
+        $telpon = "N/A";
+        $alamat = "N/A";
+        $fakultas = "N/A";
+        $jurusan = "N/A";
+        $semester = "N/A";
+        $dosbing = "N/A";
+    }
+    $stmt->close();
+
+    // Query mahasiswa table to fetch Email for this user
+    $stmt = $conn->prepare("SELECT Email FROM mahasiswa WHERE Nim = ?");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $email = $row['Email'];
+    } else {
+        $email = "N/A"; // Default value if email not found
+    }
+    $stmt->close();
+
+    $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,75 +73,152 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-<header class="mainHeader"> 
-    <nav class="navigasi-mm">
-        <a href="pengumpulan.html">PENGUMPULAN TA</a>
-        <a href="status.html">STATUS TA</a>
-        <a href="main-menu.php">HOME</a>
-        <a href="#">CONTACTS</a>
-    </nav>
-    <a class="profil" href="login.php"><ion-icon name="log-out-outline"></ion-icon></a>
-</header>
+    <header class="mainHeader"> 
+        <nav class="navigasi-mm">
+            <a href="pengumpulan.html">PENGUMPULAN TA</a>
+            <a href="status.html">STATUS TA</a>
+            <a href="main-menu.php">HOME</a>
+            <a href="#">CONTACTS</a>
+        </nav>
+        <a class="profil" href="login.php"><ion-icon name="log-out-outline"></ion-icon></a>
+    </header>
 
-<div class="main-body">
-    <div class="foto-user">
-        <img src="gambar/icons/tennis.png" alt="" class="foto-user">
+    <div class="main-body">
+        <div class="overlay"></div>
+        <div class="foto-user">
+            <img src="gambar/icons/tennis.png" alt="" class="foto-user">
 
-        <div class="edit">
-            <button class="tombol-edit">EDIT PROFIL</button>
+            <div class="edit">
+                <form action="edit-profil.php">
+                    <button class="tombol-edit">EDIT PROFIL</button>
+                </form>
+                
+            </div>
+
+            <div class="desc" style="margin-top: 20px; width: 450px;">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quaerat ullam, assumenda recusandae nihil ex esse, necessitatibus repudiandae explicabo expedita nam quam obcaecati sint quis a in quo voluptas reprehenderit.
+            </div>
+
+            <div class="verifikasi">
+                <h1 style="font-weight: bold;">VERIFIKASI</h1>
+                Silahkan upload file-file berikut untuk mengkases layanan MONITA
+                <li>Sertifikat A</li>
+                <input type="file">
+                <li>Sertifikat B</li>
+                <input type="file">
+                <li>Sertifikat C</li>
+                <input type="file">
+                <li>Sertifikat D</li>
+                <input type="file">
+            </div>
         </div>
+        
+        <div class="box-biodata">
+            <div class="salam">
+                <h1>Hello,</h1>
+                <h1 style="font-weight: bold; font-size:60px"><?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?></h1>
+            </div>
 
-        <div class="desc" style="margin-top: 20px; width: 450px;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quaerat ullam, assumenda recusandae nihil ex esse, necessitatibus repudiandae explicabo expedita nam quam obcaecati sint quis a in quo voluptas reprehenderit.
-        </div>
-
-        <div class="verifikasi">
-            <h1 style="font-weight: bold;">VERIFIKASI</h1>
-            Silahkan upload file-file berikut untuk mengkases layanan MONITA
-            <li>Sertifikat A</li>
-            <input type="file">
-            <li>Sertifikat B</li>
-            <input type="file">
-            <li>Sertifikat C</li>
-            <input type="file">
-            <li>Sertifikat D</li>
-            <input type="file">
-        </div>
-    </div>
-    
-    <div class="box-biodata">
-        <div class="salam">
-            <h1>Hello,</h1>
-            <h1 style="font-weight: bold; font-size:60px"><?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?></h1>
-        </div>
-
-        <div class="konten">
+            <div class="konten">
             <div class="b1">
                 <h3> NIM</h3>
                 <h5><?= htmlspecialchars($nim, ENT_QUOTES, 'UTF-8') ?></h5>
-                <h3> EMAIL</h3>
-                <h5> nugraha.2308561092@gmail.com</h5>
+                <h3> Email</h3>
+                <h5><?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?></h5>
                 <h3> Telpon</h3>
-                <h5> 0869696969</h5>
+                <h5><?= htmlspecialchars($telpon, ENT_QUOTES, 'UTF-8') ?></h5>
                 <h3> Alamat</h3>
-                <h5> jl pacar keling II</h5>
+                <h5><?= htmlspecialchars($alamat, ENT_QUOTES, 'UTF-8') ?></h5>
             </div>
-            <div class="b2">
-                <h3> Fakultas</h3>
-                <h5> MIPA</h5>
-                <h3> Jurusan</h3>
-                <h5> Informatika</h5>
-                <h3> Semester</h3>
-                <h5> 6</h5>
-                <h3> Dosen Pembimbing</h3>
-                <h5> I Gusti Ngurah Anom Cahyadi Putra</h5>
+                <div class="b2">
+                    <h3> Fakultas</h3>
+                    <h5><?= htmlspecialchars($fakultas, ENT_QUOTES, 'UTF-8') ?></h5>
+                    <h3> Jurusan</h3>
+                    <h5><?= htmlspecialchars($jurusan, ENT_QUOTES, 'UTF-8') ?></h5>
+                    <h3> Semester</h3>
+                    <h5><?= htmlspecialchars($semester, ENT_QUOTES, 'UTF-8') ?></h5>
+                    <h3> Dosen Pembimbing</h3>
+                    <h5><?= htmlspecialchars($dosbing, ENT_QUOTES, 'UTF-8') ?></h5>
+                </div>
             </div>
+
         </div>
     </div>
+
+
+    <div class="edit-profile-box" id="editProfileBox">
+    <form action="database/update.php" method="POST" enctype="multipart/form-data">
+        <h2 style="font-weight : bold;">Edit Profile</h2>
+        <div class="form-group">
+            <label for="pfp">Profile Picture:</label>
+            <input type="file" name="pfp" id="pfp" >
+        </div>
+
+        <div class="form-group">
+            <label for="nim">NIM:</label>
+            <input type="text" name="nim" id="nim" value="<?= htmlspecialchars($nim, ENT_QUOTES, 'UTF-8') ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="telpon">Telpon:</label>
+            <input type="text" name="telpon" id="telpon" >
+        </div>
+
+        <div class="form-group">
+            <label for="alamat">Alamat:</label>
+            <input type="text" name="alamat" id="alamat" >
+        </div>
+
+        <div class="form-group">
+            <label for="fakultas">Fakultas:</label>
+            <input type="text" name="fakultas" id="fakultas" >
+        </div>
+
+        <div class="form-group">
+            <label for="jurusan">Jurusan:</label>
+            <input type="text" name="jurusan" id="jurusan" >
+        </div>
+
+        <div class="form-group">
+            <label for="semester">Semester:</label>
+            <input type="number" name="semester" id="semester" >
+        </div>
+
+        <div class="form-group">
+            <label for="dosbing">Dosen Pembimbing:</label>
+            <input type="text" name="dosbing" id="dosbing" >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
 </div>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.querySelector(".tombol-edit").addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent default button behavior
+            const editBox = document.querySelector(".edit-profile-box");
+            const overlay = document.querySelector(".overlay");
+
+            // Toggle the visibility of the edit box and overlay
+            editBox.classList.toggle("show");
+            overlay.classList.toggle("show");
+        });
+
+        document.querySelector(".overlay").addEventListener("click", function () {
+            // Close the edit box when the overlay is clicked
+            document.querySelector(".edit-profile-box").classList.remove("show");
+            document.querySelector(".overlay").classList.remove("show");
+        });
+    </script>
 </body>
 </html>
 <?php
