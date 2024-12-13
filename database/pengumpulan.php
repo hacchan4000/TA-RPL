@@ -1,9 +1,9 @@
 <?php
     $host = "localhost";
-    $port = 3306;
+    $port = 3308;
     $dbUsername = "root";
-    $dbPass = "050714";
-    $dbName = "monita";
+    $dbPass = "";
+    $dbName = "MONITA";
 
     $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
     if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
