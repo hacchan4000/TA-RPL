@@ -27,6 +27,12 @@
     ],
     "meta-charset-utf-8": "off",
     "axe/language": "off",
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "axe/structure": [
+      "default",
+      {
+        "listitem": "off"
+      }
+    ]
   }
 }

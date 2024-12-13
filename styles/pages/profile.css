@@ -1,0 +1,110 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Header styles */
+.mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: rgba(0, 0, 0, 0.778);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.navigasi-mm {
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigasi-mm a {
+    color: white;
+    text-decoration: none;
+    margin-left: 90px;
+}
+.profil {
+    position: absolute; /* Allow precise positioning */
+    top: 20px; /* Adjust the vertical position */
+    right: 20px; /* Adjust the horizontal position */
+    color: white; /* Ensure the text/icon is visible */
+    font-size: 1.5em; /* Adjust the size if necessary */
+    text-decoration: none; /* Remove underline from the link */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+/* Main body styles */
+.main-body {
+    display: flex; /* Flexbox layout for side-by-side alignment */
+    /* Aligns items vertically */
+    margin-top: 90px; /* Moves the main body lower */
+    margin-left: 50px;
+    gap: 90px; /* Adds space between foto-user and box-biodata */
+}
+
+/* Biodata box styles */
+.box-biodata {
+    height: 500px;
+    width: 640px;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; 
+    margin: 10px;
+
+    margin: 0; /* Removes default margin */
+    border-radius: 20px;
+}
+.salam{
+    font-weight: bold;
+    font-size: 100px;
+    margin-bottom: 30px;
+    
+}
+.konten{
+   
+   
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+/* Profile picture styles */
+.foto-user {
+    height: 400px;
+    width: 400px;
+
+    border-radius: 50%;
+    
+}
+.edit{
+    justify-content: center;
+    align-items: center; 
+    margin-left: 145px;
+    margin-top: 20px;
+}
+
+.tombol-edit{
+    border: none;
+    padding: 20px;
+    border-radius: 50px;
+    background: #f1f0f0;
+    font-weight: bold;
+    box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
+    7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+
+}
+.tombol-edit:hover {
+    box-shadow: inset -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
+    inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.verifikasi{
+    width: 1000px;
+}

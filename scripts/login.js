@@ -28,3 +28,16 @@ registerLink.addEventListener('click', (event) => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Select the error message element
+    const errorElement = document.querySelector(".error-box");
+
+    // Check if the element exists and has content
+    if (errorElement && errorElement.textContent.trim() !== "") {
+        // Set a timeout to fade out the message
+        setTimeout(() => {
+            errorElement.classList.add("hidden");
+        }, 5000); // 5 seconds
+    }
+});
+

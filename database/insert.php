@@ -1,5 +1,5 @@
 <?php
-//KENAPA GABISA KUONTOLLLLLLLLLLLL
+// kode di bawah gunanya masukkan/upload data dr sign up ke database
 $username = $_POST['username'];
 $nim = $_POST['NIM'];
 $email = $_POST['Email'];
@@ -11,13 +11,16 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
     $port = 3308;
     $dbUsername = "root";
     $dbPass = "";
-    $dbName = "MONITA";
+    $dbName = "MONITA"; //nama database
 
     $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
 
     if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
         die("Connect Error ('".mysqli_connect_errno()."'): ".mysqli_connect_error());//klo error bakal nunjukin pesan error
     }else { //kalo gaad error bakal di update tabel mahasiswa di db nya
+        //enkripsi password
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+
         $SELECT ="SELECT Nim FROM mahasiswa WHERE Nim = ? LIMIT 1"; //variabel SELECT bakal nyimpen query untuk milih kolom Nim dari tabel mahasiswa dimana nim hrs ber jmlh 1
         $INSERT = "INSERT INTO mahasiswa (Username,Nim,Email,Pass) VALUES(?,?,?,?)"; // masukkan values ke tabel mahasiswa
 
@@ -35,15 +38,20 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
             $stmt = $conn->prepare($INSERT);
             $stmt->bind_param("ssss",$username, $nim, $email, $pass);
             $stmt->execute();
-            echo "record baru berhasil dimasukkan";
+
+            $berhasil ="Sign Up berhasil, Silahkan login";
+            header("Location: ../login.php?error=$berhasil");
         } else {
-            echo "Nim tersebut sudah terdaftar";
+            $terdaftar ="Nim tersebut sudah terdaftar";
+            header("Location: ../login.php?error=$terdaftar");
+
+           
         }
         $stmt->close();
         $conn->close();
     }
 } else {
-    echo "Masukan semua data";
+    echo "Data belum lengkap";
     die();
 }
 ?>

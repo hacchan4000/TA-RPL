@@ -3,10 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notifikasi</title>
+
+    <link rel="stylesheet" href="styles/pages/notif.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
 </head>
 <body>
-    <p>adit ganteng</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur commodi eligendi laboriosam incidunt soluta rem nulla. Voluptas excepturi provident amet, vero vitae ducimus dolor ea incidunt tenetur, hic cupiditate.</p>
+    <header class="mainHeader"> 
+        <nav class="navigasi-mm">
+            <a href="pengumpulan.html">PENGUMPULAN TA</a>
+            <a href="status.html">STATUS TA</a>
+            <a href="main-menu.php">HOME</a>
+            <a href="#">CONTACTS</a>
+            
+        </nav>
+        <a class="profil" href="profil.html"><ion-icon name="person-circle-outline"></ion-icon></a>
+
+       
+    </header>
+    <!--- kalo notif ijo artinya tugas di acc-->
+    <!--- kalo notif kuning artinya tugas yang baru di upload sedang di riview-->
+    <!--- kalo notif merah artinya tugas harus di revisi-->
+    <!--- kalo notif biru artinya ada meeting ama dosen -->
+
+  
+
+    <div class="class-utama">
+        
+        <div class="upper-page">
+            <h1 class="title">NOTIFICATION</h1>
+        </div>
+        
+        <div class="table" style="justify-content: space-between; width:1000px">
+            <div>
+                <h5>Timestamp</h5>
+            </div>
+            <div>
+                <h5>Source</h5>
+            </div>
+            <h5>Description</h5>
+            <h5>Events</h5>
+            
+            
+        </div>
+
+        <div class="notif-container">
+
+            <div class="box-notif-acc">
+
+                <img src="gambar/icons/tennis.png" alt="" style="height: 100px; width:100px">
+                <div class="notif-p" style="width: 190px; font-weight:bold; padding-top: 10px;">
+                    <p>Approved by: </p>
+                    <p>I Wayan Supriana,S.Si., M.Cs.</p>
+                </div> 
+                <div class="notif-m" style="width: 490px; margin :10px 50px 10px 10px; ">
+                    <p  style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum deserunt nisi dolor voluptates quidem suscipit ullam eos voluptate eius, natus sint. Rem iste dignissimos veritatis sint. Corporis ipsum odit. </p>
+                </div>   
+                <div class="notif-ev">
+                    <p>RESOLVED</p>
+                    <h6>Congratulation, your assignment has been accepted. Proceed onto your next assignment </h6>
+                </div>  
+                <img src="gambar/icons/white_check_mark.png" alt="" style="width: 90px; height: 90px; margin:10px">
+
+            </div>
+    
+            <div class="box-notif-den">
+                 
+                <img src="gambar/icons/tennis.png" alt="" style="height: 100px; width:100px">
+                <div class="notif-p" style="width: 190px; font-weight:bold; padding-top: 10px;">
+                    <p>Reviewed by: </p>
+                    <p>I Wayan Supriana,S.Si., M.Cs.</p>
+                </div> 
+                <div class="notif-m" style="width: 490px; margin :10px 50px 10px 10px; ">
+                    <p  style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum deserunt nisi dolor voluptates quidem suscipit ullam eos voluptate eius, natus sint. Rem iste dignissimos veritatis sint. Corporis ipsum odit. </p>
+                </div>   
+                <div class="notif-ev" style="color: red;">
+                    <p>REVISION</p>
+                    <h6>Your assignment is not correct yet </h6>
+                </div>  
+                <img src="gambar/icons/anger.png" alt="" style="width: 90px; height: 90px; margin:10px">
+
+            </div>
+    
+            <div class="box-notif-pend">
+                 
+                <img src="gambar/icons/tennis.png" alt="" style="height: 100px; width:100px">
+                <div class="notif-p" style="width: 190px; font-weight:bold; padding-top: 10px;">
+                    <p>Submitted by: </p>
+                    <p>Aditya chandra nugraha</p>
+                </div> 
+                <div class="notif-m" style="width: 490px; margin :10px 50px 10px 10px; ">
+                    <p  style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum deserunt nisi dolor voluptates quidem suscipit ullam eos voluptate eius, natus sint. Rem iste dignissimos veritatis sint. Corporis ipsum odit. </p>
+                </div>   
+                <div class="notif-ev" style="color: rgb(255, 208, 0);">
+                    <p>REVIEWING</p>
+                    <h6>The assignment you just posted is being revied by the lecturer </h6>
+                </div>  
+                <img src="gambar/icons/ledger.png" alt="" style="width: 90px; height: 90px; margin:10px">
+  
+            </div>
+    
+            <div class="box-notif-meet">
+                <img src="gambar/icons/tennis.png" alt="" style="height: 100px; width:100px">
+                <div class="notif-p" style="width: 190px; font-weight:bold; padding-top: 10px;">
+                    <p>Submitted by: </p>
+                    <p>Aditya chandra nugraha</p>
+                </div> 
+                <div class="notif-m" style="width: 490px; margin :10px 50px 10px 10px; ">
+                    <p  style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum deserunt nisi dolor voluptates quidem suscipit ullam eos voluptate eius, natus sint. Rem iste dignissimos veritatis sint. Corporis ipsum odit. </p>
+                </div>   
+                <div class="notif-ev" style="color: rgb(0, 179, 255);">
+                    <p>REMINDER</p>
+                    <h6>You have a meeting with your lecturer </h6>
+                </div>  
+                <img src="gambar/icons/necktie.png" alt="" style="width: 90px; height: 90px; margin:10px">
+  
+            </div>
+        </div>
+        
+
+        
+    </div>
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
