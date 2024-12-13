@@ -41,6 +41,12 @@
 
         die();
     }else{
+
+        echo("Maaf, Tidak Lengkap");
+        die();
+    }
+?>
+
         echo("Galengkap tod");
         die();
     }
