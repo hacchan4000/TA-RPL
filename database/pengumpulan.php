@@ -41,7 +41,7 @@
 
         die();
     }else{
-        echo("Galengkap tod");
+        echo("Tidak Lengkap");
         die();
     }
 ?>
