@@ -41,7 +41,7 @@
 
         die();
     }else{
-        echo("Tidak Lengkap");
+        echo("Maaf, Tidak Lengkap");
         die();
     }
 ?>
