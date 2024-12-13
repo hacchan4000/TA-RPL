@@ -24,6 +24,7 @@ if (!empty($username) || !empty($nim) || !empty($email) || !empty($pass)) { //ch
         $SELECT ="SELECT Nim FROM mahasiswa WHERE Nim = ? LIMIT 1"; //variabel SELECT bakal nyimpen query untuk milih kolom Nim dari tabel mahasiswa dimana nim hrs ber jmlh 1
         $INSERT = "INSERT INTO mahasiswa (Username,Nim,Email,Pass) VALUES(?,?,?,?)"; // masukkan values ke tabel mahasiswa
 
+        $INSERT2 = "INSERT INTO mahasiswa (Username,Nim,Email,Pass) VALUES(?,?,?,?)";
         //prepare statement buat query select
         $stmt = $conn->prepare($SELECT);
         $stmt->bind_param("s",$nim);// nanti tanda ? di query select bakal digantiin sama $nim, tipe $nim itu string (s)

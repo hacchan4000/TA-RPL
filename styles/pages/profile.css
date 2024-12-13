@@ -47,7 +47,7 @@
     display: flex; /* Flexbox layout for side-by-side alignment */
     /* Aligns items vertically */
     margin-top: 90px; /* Moves the main body lower */
-    margin-left: 50px;
+    margin-left: 190px;
     gap: 90px; /* Adds space between foto-user and box-biodata */
 }
 
@@ -68,13 +68,18 @@
     margin-bottom: 30px;
     
 }
-.konten{
-   
-   
+.konten {
+    display: flex; /* Enables flexbox layout */
+    justify-content: space-between; /* Adds space between b1 and b2 */
+    gap: 20px; /* Optional: Adjust the spacing between b1 and b2 */
     margin-top: 10px;
     border-radius: 20px;
 }
 
+.b1, .b2 {
+    flex: 1; /* Ensures equal width for b1 and b2 */
+    padding: 10px; /* Adds some spacing inside the boxes */
+}
 /* Profile picture styles */
 .foto-user {
     height: 400px;
