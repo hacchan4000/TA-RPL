@@ -47,8 +47,8 @@
     display: flex; /* Flexbox layout for side-by-side alignment */
     /* Aligns items vertically */
     margin-top: 90px; /* Moves the main body lower */
-    margin-left: 190px;
-    gap: 90px; /* Adds space between foto-user and box-biodata */
+    margin-left: 180px;
+    gap: 100px; /* Adds space between foto-user and box-biodata */
 }
 
 /* Biodata box styles */
@@ -84,10 +84,25 @@
 .foto-user {
     height: 400px;
     width: 400px;
-
     border-radius: 50%;
     
 }
+
+.pfp{
+    width: 450px; 
+    height: 450px; 
+    background: rgb(224, 222, 223); 
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
+    7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.foto{
+    width: 550px; 
+    height: 550px; 
+    align-self: center;
+}
+
 .edit{
     justify-content: center;
     align-items: center; 

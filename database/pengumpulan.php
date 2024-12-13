@@ -46,8 +46,3 @@
         die();
     }
 ?>
-
-        echo("Galengkap tod");
-        die();
-    }
-?>

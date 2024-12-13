@@ -58,6 +58,11 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     $stmt->close();
 
     $conn->close();
+
+    $profileImagePath = "gambar/foto-pfp/" . htmlspecialchars($gambar, ENT_QUOTES, 'UTF-8');
+    if (!file_exists($profileImagePath) || empty($gambar)) {
+        $profileImagePath = "/Applications/XAMPP/xamppfiles/htdocs/TA-RPL/gambar/icons/tennis.png";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +91,10 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     <div class="main-body">
         <div class="overlay"></div>
         <div class="foto-user">
-            <img src="gambar/icons/tennis.png" alt="" class="foto-user">
+            <div class="pfp">
+                <img src="/Applications/XAMPP/xamppfiles/htdocs/TA-RPL/gambar/foto-pfp/2308561092_profile.png" alt="Profile Picture">
+            </div>
+           
 
             <div class="edit">
                 <form action="edit-profil.php">
@@ -147,56 +155,56 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
 
 
     <div class="edit-profile-box" id="editProfileBox">
-    <form action="database/update.php" method="POST" enctype="multipart/form-data">
-        <h2 style="font-weight : bold;">Edit Profile</h2>
-        <div class="form-group">
-            <label for="pfp">Profile Picture:</label>
-            <input type="file" name="pfp" id="pfp" >
-        </div>
+        <form action="database/update.php" method="POST" enctype="multipart/form-data">
+            <h2 style="font-weight : bold;">Edit Profile</h2>
+            <div class="form-group">
+                <label for="pfp">Profile Picture:</label>
+                <input type="file" name="pfp" id="pfp" >
+            </div>
 
-        <div class="form-group">
-            <label for="nim">NIM:</label>
-            <input type="text" name="nim" id="nim" value="<?= htmlspecialchars($nim, ENT_QUOTES, 'UTF-8') ?>">
-        </div>
+            <div class="form-group">
+                <label for="nim">NIM:</label>
+                <input type="text" name="nim" id="nim" value="<?= htmlspecialchars($nim, ENT_QUOTES, 'UTF-8') ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email" value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>">
-        </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="telpon">Telpon:</label>
-            <input type="text" name="telpon" id="telpon" >
-        </div>
+            <div class="form-group">
+                <label for="telpon">Telpon:</label>
+                <input type="text" name="telpon" id="telpon" >
+            </div>
 
-        <div class="form-group">
-            <label for="alamat">Alamat:</label>
-            <input type="text" name="alamat" id="alamat" >
-        </div>
+            <div class="form-group">
+                <label for="alamat">Alamat:</label>
+                <input type="text" name="alamat" id="alamat" >
+            </div>
 
-        <div class="form-group">
-            <label for="fakultas">Fakultas:</label>
-            <input type="text" name="fakultas" id="fakultas" >
-        </div>
+            <div class="form-group">
+                <label for="fakultas">Fakultas:</label>
+                <input type="text" name="fakultas" id="fakultas" >
+            </div>
 
-        <div class="form-group">
-            <label for="jurusan">Jurusan:</label>
-            <input type="text" name="jurusan" id="jurusan" >
-        </div>
+            <div class="form-group">
+                <label for="jurusan">Jurusan:</label>
+                <input type="text" name="jurusan" id="jurusan" >
+            </div>
 
-        <div class="form-group">
-            <label for="semester">Semester:</label>
-            <input type="number" name="semester" id="semester" >
-        </div>
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <input type="number" name="semester" id="semester" >
+            </div>
 
-        <div class="form-group">
-            <label for="dosbing">Dosen Pembimbing:</label>
-            <input type="text" name="dosbing" id="dosbing" >
-        </div>
+            <div class="form-group">
+                <label for="dosbing">Dosen Pembimbing:</label>
+                <input type="text" name="dosbing" id="dosbing" >
+            </div>
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
-</div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
 
 
 
