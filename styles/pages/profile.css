@@ -70,7 +70,7 @@
 }
 .konten{
    
-    padding: 5px;
+   
     margin-top: 10px;
     border-radius: 20px;
 }
@@ -103,4 +103,8 @@
 .tombol-edit:hover {
     box-shadow: inset -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
     inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.verifikasi{
+    width: 1000px;
 }
