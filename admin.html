@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin</title>
+   <link rel="stylesheet" href="styles/pages/admin.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <nav class="menu">
+            <ul>
+                <li>Dashboard</li>
+                <li>Mahasiswa</li>
+                <li>Dosen</li>
+                <li>Settings</li>
+            </ul>
+        </nav>
+        <div class="content">
+            <header>
+                <h1>Monitoring Tugas Akhir Mahasiswa</h1>
+            </header>
+            <main>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Judul Tugas Akhir</th>
+                            <th>Status</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ahmad</td>
+                            <td>Analisis Data Besar</td>
+                            <td>Disetujui</td>
+                            <td><button>Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Siti</td>
+                            <td>Pemrograman Web</td>
+                            <td>Dalam Proses</td>
+                            <td><button>Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Budi</td>
+                            <td>Keamanan Jaringan</td>
+                            <td>Ditolak</td>
+                            <td><button>Detail</button></td>
+                        </tr>
+                        <!-- Tambahkan lebih banyak data sesuai kebutuhan -->
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
 </body>
 </html>

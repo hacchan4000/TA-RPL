@@ -83,7 +83,7 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
             <a href="pengumpulan.html">PENGUMPULAN TA</a>
             <a href="status.html">STATUS TA</a>
             <a href="main-menu.php">HOME</a>
-            <a href="#">CONTACTS</a>
+             <!---<a href="#">CONTACTS</a> -->
         </nav>
         <a class="profil" href="login.php"><ion-icon name="log-out-outline"></ion-icon></a>
     </header>
@@ -109,15 +109,13 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
 
             <div class="verifikasi">
                 <h1 style="font-weight: bold;">VERIFIKASI</h1>
-                Silahkan upload file-file berikut untuk mengkases layanan MONITA
-                <li>Sertifikat A</li>
+                untuk mengkases layanan MONITA, mohon penuhi syarat pengajuan proposal TA berikut:
+                <ul>1.⁠ ⁠Telah mengambil dan lulus mata kuliah sebanyak 100 SKS, dengan menyertakan bukti KHS terakhir. </ul>
                 <input type="file">
-                <li>Sertifikat B</li>
+                <ul>2.⁠ ⁠Telah mengikuti Workshop Tugas Akhir, dengan menyertakan bukti Sertifikat Workshop Tugas Akhir.</ul>
                 <input type="file">
-                <li>Sertifikat C</li>
-                <input type="file">
-                <li>Sertifikat D</li>
-                <input type="file">
+                
+               
             </div>
         </div>
         

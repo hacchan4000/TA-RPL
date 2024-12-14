@@ -28,7 +28,7 @@
             <a href="pengumpulan.html">PENGUMPULAN TA</a>
             <a href="status.html">STATUS TA</a>
             <a href="notif.html">NOTIFICATION</a>
-            <a href="#">CONTACTS</a>
+            <!---<a href="#">CONTACTS</a> -->
             
         </nav>
         <a class="profil" href="profil.php"><ion-icon name="person-circle-outline"></ion-icon></a>
@@ -42,7 +42,7 @@
         
        
         <div class="image-container">
-            <h1 class="intro">INTRODUCING</h1>
+            <h1 class="intro">WELCOME TO</h1>
             <video class="monita" src="gambar/background/monita-vid.mp4" alt="" autoplay muted loop></video>
             <h1 class="judul">A REVOLUTIONARY WAY TO COMPLETE A THESIS</h1>
             <h1 class="todo"> Things TO DO</h1>

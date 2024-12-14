@@ -7,19 +7,33 @@
     <link rel="stylesheet" href="styles/pages/pengumpulan.css">
 </head>
 <body>
+    <header> 
+        <nav class="navigasi-mm">
+            <a href="main-menu.php">HOME</a>
+            <a href="status.html">STATUS TA</a>
+            <a href="notif.html">NOTIFICATION</a>
+             <!---<a href="#">CONTACTS</a> -->
+            
+        </nav>
+        <a class="profil" href="profil.php"><ion-icon name="person-circle-outline"></ion-icon></a>
+
+       
+    </header>
+    
+
+
+    <h1 style="margin-top: 100px;">PENGUMPULAN TA</h1>
     <div class="container">
-        <div class="profile">
-            <img src="placeholder.jpg" alt="Profile Picture">
-            <div class="profile-info">
-            </div>
-        </div>
+     
         <form action="database/pengumpulan.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="judul-ta">Judul TA</label>
 
                 <input type="text" id="judul-ta" name="judul-ta" placeholder="Masukkan judul Tugas Akhir Anda">
 
+                <label for="judul-ta">Deskripsi</label>
                 <input type="text" id="judul-ta" name="judul-ta" placeholder="Masukkan judul TA Anda">
+
 
             </div>
             <div class="form-group">
@@ -33,6 +47,7 @@
                 <label for="progress">Progress</label>
 
                 <select id="progress" name="progress">
+                    <option value="proposal">Proposal</option>
                     <option value="progressAwal">Progres Awal</option>
                     <option value="BAB1">BAB I</option>
                     <option value="BAB2">BAB II</option>
@@ -51,6 +66,11 @@
             <button class="submit-btn" type="submit">Kirim Pengajuan</button>
         </form>
     </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
 

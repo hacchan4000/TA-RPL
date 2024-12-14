@@ -1,11 +1,10 @@
-
-
 /* Styling untuk body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -14,59 +13,48 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(147, 147, 147);
 }
+
+/* Header styling */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.778);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    font-weight: 30px;
-    background-color: rgba(0, 0, 0, 0.778);
-    
 }
 
 .profil {
-    position: absolute; /* Allow precise positioning */
-    top: 20px; /* Adjust the vertical position */
-    right: 20px; /* Adjust the horizontal position */
-    color: white; /* Ensure the text/icon is visible */
-    font-size: 1.5em; /* Adjust the size if necessary */
-    text-decoration: none; /* Remove underline from the link */
-    z-index: 100; /* Ensure it appears above other elements */
-}
-.navigasi-mm{
-    position: relative;
-    font-size: 1.1em;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     color: white;
+    font-size: 1.5em;
     text-decoration: none;
-    font-size: 500;
-    font-weight: 500;
-    margin-left: 40px;
-    text-decoration: none;
-}
-.navigasi-mm a{
-    position: relative;
-    font-size: 1.1em;
-    color: white;
-    text-decoration: none;
-    font-size: 500;
-    font-weight: 500;
-    margin-left: 90px;
-    text-decoration: none;
+    z-index: 100;
 }
 
+.navigasi-mm {
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigasi-mm a {
+    margin-left: 90px;
+    text-decoration: none;
+    color: white;
+}
 
 /* Container utama */
 .container {
     width: 800px;
-    
     margin-top: 100px;
-
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -79,7 +67,6 @@ h1 {
     color: #333;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: 200px;
 }
 
 /* Styling tabel */
@@ -89,29 +76,26 @@ table {
     margin-bottom: 20px;
 }
 
-/* Garis batas untuk tabel */
 table, th, td {
-    border: 1px solid #ddd; /* Menambahkan border pada tabel, header, dan sel */
+    border: 1px solid #ddd;
 }
 
-/* Styling untuk header tabel */
 th {
     background-color: #4d4f51;
     color: #fff;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
-/* Styling untuk sel tabel */
 td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Garis pemisah antara baris data */
 }
 
-/* Styling untuk baris tabel yang terakhir */
-tr:last-child td {
-    border-bottom: none; /* Menghilangkan garis bawah pada baris terakhir */
+tbody tr td[colspan="6"] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
 }
 
 /* Styling untuk tombol tambah data */
@@ -141,5 +125,14 @@ tr:last-child td {
 
     h1 {
         font-size: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    table {
+        font-size: 12px;
+    }
+    th, td {
+        padding: 5px;
     }
 }
