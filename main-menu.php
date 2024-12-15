@@ -216,7 +216,8 @@
                 </div>
 
                 <div class="bimbingan" style="width: 550px;  height: 415px;  background: rgb(245, 243, 243); margin-top: 60px; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
-                    <div class="request" style="width: 500px;  height: 45px; background-color: pink; margin: 20px;"></div>
+                    <h1>Request Bimbingan</h1>
+                    <div class="request" style="width: 500px;  height: 65px; background-color: pink; margin: 20px; border-radius: 10px;"></div>
                 </div>
         </div>
       

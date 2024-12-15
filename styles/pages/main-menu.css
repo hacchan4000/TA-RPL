@@ -167,6 +167,8 @@ svg{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin: 60px;
+    flex: 1; /* Make the calendar take up remaining space */
+    max-width: 400px;
 }
 
 .bungkus{
