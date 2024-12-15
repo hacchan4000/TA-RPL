@@ -174,7 +174,6 @@
                     </div>
                 </div>
             </div>
-
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="390px" height="390px">
                 <defs>
                    <linearGradient id="GradientColor">
@@ -183,7 +182,7 @@
                    </linearGradient>
                 </defs>
                 <circle cx="194" cy="195" r="180" stroke-linecap="round" />
-        </svg>
+            </svg> 
         </div>
 
         <h1> JADWALKAN BIMBINGAN</h1>
@@ -217,7 +216,14 @@
 
                 <div class="bimbingan" style="width: 550px;  height: 415px;  background: rgb(245, 243, 243); margin-top: 60px; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
                     <h1>Request Bimbingan</h1>
-                    <div class="request" style="width: 500px;  height: 65px; background-color: pink; margin: 20px; border-radius: 10px;"></div>
+                    <div class="request" style="width: 500px;  height: 65px; background-color: gray; margin: 20px; border-radius: 10px; align-items: flex-start">
+                        <div class="r-msg" style="color: white; font-weight: bold;">
+                            1.Bimbingan Progress Awal
+                        </div>
+                        <div class="r-msg" style="color: white; font-weight: bold;">
+                            20/11/2024
+                        </div>
+                    </div>
                 </div>
         </div>
       

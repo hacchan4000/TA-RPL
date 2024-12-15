@@ -1,20 +1,37 @@
 <?php
-    $host = "localhost";
-    $port = 3308;
-    $dbUsername = "root";
-    $dbPass = "";
-    $dbName = "MONITA";
+    session_start();
 
-    $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
-    if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
-        die("Connect Error ('".mysqli_connect_errno()."'): ".mysqli_connect_error());//klo error bakal nunjukin pesan error
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (!isset($_SESSION['Nim'])) {
+            header("Location: ../login.php");
+            exit();
+        }
+    
+        $nim = $_SESSION['Nim']; 
+
+
+        $host = "localhost";
+        $port = 3308;
+        $dbUsername = "root";
+        $dbPass = "";
+        $dbName = "MONITA";
+
+        $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
+        if (mysqli_connect_error()) { // check ada error g pas nyoba konek ke db
+            die("Connect Error ('".mysqli_connect_errno()."'): ".mysqli_connect_error());//klo error bakal nunjukin pesan error
+        }
+        
+        $judul = $_POST['judul-ta'];
+        $tanggal = $_POST['tanggal'];
+        $progress = $_POST['progress'];
+
     }
     
-    session_start();
-    $nim = $_SESSION['Nim'];
-    $judul = $_POST['judul-ta'];
-    $tanggal = $_POST['tanggal'];
-    $progress = $_POST['progress'];
+
+    
+    
+    
+    
 
     if (!empty($nim) && !empty($judul) && !empty($tanggal) && !empty($progress)) {
         $fileName = $_FILES["file-upload"]["name"];
