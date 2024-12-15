@@ -213,3 +213,11 @@ svg{
     height: 400px;
     background-color: pink;
 }
+
+.container-bimbingan {
+    display: flex; /* Enable Flexbox layout */
+    justify-content: space-between; /* Add space between calendar and bimbingan */
+    align-items: flex-start; /* Align items to the top (or use 'center' if desired) */
+    gap: 20px; /* Optional: Add spacing between the items */
+    padding: 10px; /* Optional: Add padding around the container */
+}

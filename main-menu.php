@@ -186,32 +186,42 @@
         </svg>
         </div>
 
-        <h1> Jadwalkan Bimbingan</h1>
-        <div class="calendar">
-            <div class="bungkus">
-                <button id="tmbl-prev">
-                    <
-                </button>
-                <div class="blnThn" id="blnThn"></div>
-                <button id="tmbl-next">
-                    >
-                </button>
-            </div>
-            <div class="hari">
-                <div class="day">MON</div>
-                <div class="day">TUE</div>
-                <div class="day">WED</div>
-                <div class="day">THU</div>
-                <div class="day">FRI</div>
-                <div class="day">SAT</div>
-                <div class="day">SUN</div>
-            </div>
-            <div class="dates" id="dates"></div>
-        </div>
+        <h1> JADWALKAN BIMBINGAN</h1>
 
-        <div class="bimbingan">
-            <div class="request"></div>
+        <div class="container-bimbingan" style="display: flex; 
+        justify-content: space-between;
+        align-items: flex-start; 
+        gap: 20px; 
+        padding: 10px; ">
+                <div class="calendar">
+                    <div class="bungkus">
+                        <button id="tmbl-prev">
+                            <
+                        </button>
+                        <div class="blnThn" id="blnThn"></div>
+                        <button id="tmbl-next">
+                            >
+                        </button>
+                    </div>
+                    <div class="hari">
+                        <div class="day">MON</div>
+                        <div class="day">TUE</div>
+                        <div class="day">WED</div>
+                        <div class="day">THU</div>
+                        <div class="day">FRI</div>
+                        <div class="day">SAT</div>
+                        <div class="day">SUN</div>
+                    </div>
+                    <div class="dates" id="dates"></div>
+                </div>
+
+                <div class="bimbingan" style="width: 550px;  height: 415px;  background: rgb(245, 243, 243); margin-top: 60px; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+                    <div class="request" style="width: 500px;  height: 45px; background-color: pink; margin: 20px;"></div>
+                </div>
         </div>
+      
+
+        
 
         <footer>
             <div class="container my-5">
