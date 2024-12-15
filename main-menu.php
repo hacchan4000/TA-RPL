@@ -186,6 +186,7 @@
         </svg>
         </div>
 
+        <h1> Jadwalkan Bimbingan</h1>
         <div class="calendar">
             <div class="bungkus">
                 <button id="tmbl-prev">
@@ -206,6 +207,10 @@
                 <div class="day">SUN</div>
             </div>
             <div class="dates" id="dates"></div>
+        </div>
+
+        <div class="bimbingan">
+            <div class="request"></div>
         </div>
 
         <footer>
