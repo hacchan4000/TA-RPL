@@ -94,11 +94,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Execute the query
+    // After successful assignment submission
     if ($stmt->execute()) {
+        // Add notification to the database
+        $notificationMessage = "submitted";
+        $source = "Assignment Submission";
+        $timestamp = date("Y-m-d H:i:s"); // Current timestamp
+        
+        $notifQuery = "INSERT INTO Notifications (nim, message, source, timestamp) VALUES (?, ?, ?, ?)";
+        $notifStmt = $conn->prepare($notifQuery);
+        $notifStmt->bind_param("ssss", $nim, $notificationMessage, $source, $timestamp);
+        $notifStmt->execute();
+        $notifStmt->close();
+        
         header("Location: ../notif.php");
     } else {
         echo "Error updating progress: " . $stmt->error;
     }
+
+    
 
     // Close resources
     $stmt->close();
