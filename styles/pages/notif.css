@@ -9,25 +9,38 @@
 
 /* Header Styles */
 .main-header {
-    text-align: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background-color: rgba(0, 0, 0, 0.778);
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    font-weight: 30px;
+    background-color: rgba(0, 0, 0, 0.778);
 }
-
-.navigation a {
+.navigation{
+    position: relative;
+    font-size: 1.1em;
     color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
     margin-left: 40px;
     text-decoration: none;
+}
+.navigation a {
+    position: relative;
     font-size: 1.1em;
-    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
+    margin-left: 90px;
+    text-decoration: none;
 }
 
 .profile {

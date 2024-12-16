@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if ($stmt->execute()) {
-        header("Location: ../notif.html");
+        header("Location: ../notif.php");
     } else {
         echo "Error updating progress: " . $stmt->error;
     }

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (isset($_SESSION['Username'])&& isset($_SESSION['Nim'])) {
+   
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,3 +112,9 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+
+<?php  } else {
+    header("Location: ../TA-RPL/login.php");
+    //header("Location: ../main-menu.php");
+    exit;
+}
