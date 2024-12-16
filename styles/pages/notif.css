@@ -66,11 +66,7 @@
     padding: 10px;
     border-radius: 5px;
 }
-.elemen-utama{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-}
+
 .title{
     display: flex;
     justify-content: center;
@@ -134,6 +130,26 @@
     height: 90px;
 }
 
+.notification {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.notification-pending {
+    background-color: #fff9c4;
+}
+.notification-revision {
+    background-color: #ffccbc;
+}
+.notification-approval {
+    background-color: #c8e6c9;
+}
+.notification-meeting {
+    background-color: #bbdefb;
+}
+
+
 /* Notification Types */
 .notification-approval {
     background-color: rgb(215, 247, 215);
@@ -145,7 +161,7 @@
     border: 2px solid rgb(236, 142, 142);
 }
 
-.notification-pending {
+.notification .notification-pending {
     background-color: rgb(250, 242, 193);
     border: 2px solid rgb(236, 206, 142);
 }

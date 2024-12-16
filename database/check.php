@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     } elseif ($role === 'lecturer') {
                         $_SESSION['Nidn'] = $data['NIDN'];
                         $_SESSION['Username'] = $data['Username'];
-                        header("Location: ../dosen.html");
+                        header("Location: ../dosen.php");
                     } elseif ($role === 'admin') {
                         $_SESSION['id'] = $data['id'];
                         $_SESSION['Username'] = $data['Username'];
