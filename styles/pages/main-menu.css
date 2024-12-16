@@ -167,6 +167,8 @@ svg{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin: 60px;
+    flex: 1; /* Make the calendar take up remaining space */
+    max-width: 400px;
 }
 
 .bungkus{
@@ -206,4 +208,18 @@ svg{
 .hari{
     display: flex;
     margin: 10px;
+}
+
+.bimbingan{
+    width: 600px;
+    height: 400px;
+    background-color: pink;
+}
+
+.container-bimbingan {
+    display: flex; /* Enable Flexbox layout */
+    justify-content: space-between; /* Add space between calendar and bimbingan */
+    align-items: flex-start; /* Align items to the top (or use 'center' if desired) */
+    gap: 20px; /* Optional: Add spacing between the items */
+    padding: 10px; /* Optional: Add padding around the container */
 }

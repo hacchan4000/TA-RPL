@@ -148,3 +148,19 @@ h6{
     justify-content: center;
     align-items: center;
 }
+
+.table{
+    display: flex; /* Enables Flexbox layout */
+    justify-content: space-between; /* Distributes items with space between them */
+    align-items: center; /* Aligns items vertically */
+    padding: 10px; /* Adds spacing around the header */
+    margin: 20px 0; /* Adds space above and below */
+    background-color: #f5f5f5; /* Optional: Background for better visibility */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.table h5{
+    margin: 0; /* Removes default margin from headers */
+    flex: 1; /* Distributes space equally between headers */
+    text-align: center; /* Centers text in each header */
+}
