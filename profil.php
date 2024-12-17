@@ -108,14 +108,16 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
             </div>
 
             <div class="verifikasi">
+                <form action="update.php"></form>
                 <h1 style="font-weight: bold;">VERIFIKASI</h1>
                 untuk mengkases layanan MONITA, mohon penuhi syarat pengajuan proposal TA berikut:
                 <ul>1.⁠ ⁠Telah mengambil dan lulus mata kuliah sebanyak 100 SKS, dengan menyertakan bukti KHS terakhir. </ul>
-                <input type="file">
+                <input type="file" name="verif1" id="verif1">
                 <ul>2.⁠ ⁠Telah mengikuti Workshop Tugas Akhir, dengan menyertakan bukti Sertifikat Workshop Tugas Akhir.</ul>
-                <input type="file">
-                
-               
+                <input type="file"  name="verif2" id="verif2">
+                <ul>3.⁠ ⁠Telah menjual jiwa ke iblis .</ul>
+                <input type="file"  name="verif3" id="verif3">
+                <button style="margin: 10px;">Submit</button>
             </div>
         </div>
         
