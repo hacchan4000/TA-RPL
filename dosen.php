@@ -1,61 +1,62 @@
 
 
 <?php 
-session_start();
+session_start(); // Start the session
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $NIDN = trim($_POST['myNim']);
-    $pass = trim($_POST['myPassword']);
+// Check if session variables are set (i.e., the user has logged in)
+if (isset($_SESSION['Nidn'])) {
+    $NIDN = $_SESSION['Nidn']; // Use the session variable
+   
 
-    if (!empty($NIDN) && !empty($pass)) {
-        $host = "localhost"; // Correct hostname
-        $port = 3308;
-        $dbUsername = "root";
-        $dbPass = "";
-        $dbName = "MONITA";
+    // You can now remove the part where you are fetching NIDN from POST
+    // and directly use $NIDN for further queries, like:
+    $host = "localhost";
+    $port = 3308;
+    $dbUsername = "root";
+    $dbPass = "";
+    $dbName = "MONITA";
 
-        // Database connection
-        $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
-        if ($conn->connect_error) {
-            error_log("Connection failed: " . $conn->connect_error);
-            die("Internal server error. Please try again later.");
-        }
-
-        // Debugging NIM retrieval
-        $nimList = [];
-        $query1 = "SELECT NIM FROM Bimbingan WHERE NIDN = '$NIDN'";
-        $result1 = $conn->query($query1);
-
-        if ($result1->num_rows > 0) {
-            while ($row = $result1->fetch_assoc()) {
-                $nimList[] = $row['NIM'];
-            }
-            error_log("Retrieved NIMs: " . implode(", ", $nimList));
-        } else {
-            echo ("No NIMs found for NIDN: $NIDN");
-        }
-
-        // Debugging students retrieval
-        $students = [];
-        if (!empty($nimList)) {
-            $nimListStr = "'" . implode("','", $nimList) . "'";
-            $query2 = "SELECT Nim, Username AS Nama FROM mahasiswa WHERE Nim IN ($nimListStr)";
-            $result2 = $conn->query($query2);
-
-            if ($result2->num_rows > 0) {
-                while ($row = $result2->fetch_assoc()) {
-                    $students[] = $row;
-                }
-                error_log("Retrieved students: " . print_r($students, true));
-            } else {
-                error_log("No students found for NIMs: $nimListStr");
-            }
-        }
-
-        $conn->close();
-    } else {
-        die("NIDN and Password are required.");
+    // Database connection
+    $conn = new mysqli($host, $dbUsername, $dbPass, $dbName, $port);
+    if ($conn->connect_error) {
+        error_log("Connection failed: " . $conn->connect_error);
+        die("Internal server error. Please try again later.");
     }
+
+    // Debugging NIM retrieval
+    $nimList = [];
+    $query1 = "SELECT NIM FROM Bimbingan WHERE NIDN = '$NIDN'";
+    $result1 = $conn->query($query1);
+
+    if ($result1->num_rows > 0) {
+        while ($row = $result1->fetch_assoc()) {
+            $nimList[] = $row['NIM'];
+        }
+        error_log("Retrieved NIMs: " . implode(", ", $nimList));
+    } else {
+        echo ("No NIMs found for NIDN: $NIDN");
+    }
+
+    // Debugging students retrieval
+    $students = [];
+    if (!empty($nimList)) {
+        $nimListStr = "'" . implode("','", $nimList) . "'";
+        $query2 = "SELECT Nim, Username AS Nama FROM mahasiswa WHERE Nim IN ($nimListStr)";
+        $result2 = $conn->query($query2);
+
+        if ($result2->num_rows > 0) {
+            while ($row = $result2->fetch_assoc()) {
+                $students[] = $row;
+            }
+            error_log("Retrieved students: " . print_r($students, true));
+        } else {
+            error_log("No students found for NIMs: $nimListStr");
+        }
+    }
+
+    $conn->close();
+} else {
+    die("You are not logged in. Please log in first.");
 }
 ?>
 
@@ -70,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="styles/pages/dosen.css">
 </head>
 </body>
+    
     <header> 
         <nav class="navigasi-mm">
             <a href="jadwal-bimbingan.html">Jadwal Bimbingan</a>
@@ -135,12 +137,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <th>NIM</th>
                         <th>Status</th>
                         <th>Keterangan</th>
+                        <th>Action</th>
                     </tr>
                     <tr>
                         <td>John Doe</td>
                         <td>2308561045</td>
                         <td>Updated</td>
                         <td><a href="#" class="btn">View </a></td>
+                        <td> 
+                            <button class="aksi" style="background-color: rgb(215, 247, 215);"> Accept</button>
+                            <button class="aksi"> Revisi</button>
+                            <button class="aksi"> Meet</button>
+                        </td>
                     </tr>
                     </tr>
                 </table>
@@ -175,5 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+   
 </body>
 </html>
