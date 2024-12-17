@@ -4,8 +4,8 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $NIDN = $_POST['myNim'];
-    $pass = $_POST['myPassword'];
+    $NIDN = trim($_POST['myNim']);
+    $pass = trim($_POST['myPassword']);
 
     if (!empty($NIDN) && !empty($pass)) {
         $host = "localhost"; // Correct hostname
@@ -21,46 +21,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Internal server error. Please try again later.");
         }
 
-        // Prepare statement to retrieve NIMs from Bimbingan table
-        $stmt = $conn->prepare("SELECT NIM FROM Bimbingan WHERE NIDN = ?");
-        if (!$stmt) {
-            error_log("Prepare failed: " . $conn->error);
-            die("Query preparation failed.");
-        }
-        $stmt->bind_param("s", $NIDN);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Array to store NIMs
+        // Debugging NIM retrieval
         $nimList = [];
-        while ($row = $result->fetch_assoc()) {
-            $nimList[] = $row['NIM'];
-        }
-        $stmt->close();
+        $query1 = "SELECT NIM FROM Bimbingan WHERE NIDN = '$NIDN'";
+        $result1 = $conn->query($query1);
 
-        // If NIMs found, fetch corresponding Mahasiswa names
+        if ($result1->num_rows > 0) {
+            while ($row = $result1->fetch_assoc()) {
+                $nimList[] = $row['NIM'];
+            }
+            error_log("Retrieved NIMs: " . implode(", ", $nimList));
+        } else {
+            echo ("No NIMs found for NIDN: $NIDN");
+        }
+
+        // Debugging students retrieval
         $students = [];
         if (!empty($nimList)) {
-            // Create placeholders dynamically
-            $placeholders = rtrim(str_repeat('?,', count($nimList)), ',');
-            $query = "SELECT Nim, Username AS Nama FROM mahasiswa WHERE Nim IN ($placeholders)";
+            $nimListStr = "'" . implode("','", $nimList) . "'";
+            $query2 = "SELECT Nim, Username AS Nama FROM mahasiswa WHERE Nim IN ($nimListStr)";
+            $result2 = $conn->query($query2);
 
-            $stmt = $conn->prepare($query);
-            if (!$stmt) {
-                error_log("Prepare failed: " . $conn->error);
-                die("Query preparation failed.");
+            if ($result2->num_rows > 0) {
+                while ($row = $result2->fetch_assoc()) {
+                    $students[] = $row;
+                }
+                error_log("Retrieved students: " . print_r($students, true));
+            } else {
+                error_log("No students found for NIMs: $nimListStr");
             }
-
-            $types = str_repeat('s', count($nimList)); // 's' for string
-            $stmt->bind_param($types, ...$nimList);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            // Store results in an associative array
-            while ($row = $result->fetch_assoc()) {
-                $students[] = $row;
-            }
-            $stmt->close();
         }
 
         $conn->close();
@@ -69,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -102,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Students</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="students.png" alt="">
+                        
                     </div>
                 </div>
                 <div class="card">
@@ -111,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Students</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="students.png" alt="">
+                       
                     </div>
                 </div>
                 <div class="card">
@@ -120,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Students</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="students.png" alt="">
+                        
                     </div>
                 </div>
                 <div class="card">
@@ -129,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h3>Students</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="students.png" alt="">
+                        
                     </div>
                 </div>
             </div>
@@ -168,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php if (!empty($students)): ?>
                         <?php foreach ($students as $student): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($student['NIM']); ?></td>
+                                <td><?php echo htmlspecialchars($student['Nim']); ?></td>
                                 <td><?php echo htmlspecialchars($student['Nama']); ?></td>
                             </tr>
                         <?php endforeach; ?>
@@ -178,7 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </tr>
                     <?php endif; ?>
                 </table>
-</div>
+            </div>
+
 
             </div>
         </div>
