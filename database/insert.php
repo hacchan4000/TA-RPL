@@ -26,7 +26,7 @@ if (!empty($username) && !empty($nim) && !empty($email) && !empty($pass)) {
 
         // Queries
         $SELECT = "SELECT Nim FROM mahasiswa WHERE Nim = ? LIMIT 1";
-        $INSERT1 = "INSERT INTO mahasiswa (Username, Nim, Email, Pass) VALUES (?, ?, ?, ?)";
+        $INSERT1 = "INSERT INTO mahasiswa (Username, Nim, Email, Pass, verif) VALUES (?, ?, ?, ?, 0)";
         $INSERT2 = "INSERT INTO Biodata (Nim, gambar, telpon, alamat, veriffikasi1, veriffikasi2, veriffikasi3, fakultas, jurusan, semester, dosbing) 
                     VALUES (?, '', '...', '...', '', '', '', '...', '...', 0, '...')";
         $INSERT3 = "INSERT INTO Progress (NIM_MHS, waktu, file_path, progressAwal, BAB1, BAB2, BAB3, BAB4, BAB5, Akhir) 

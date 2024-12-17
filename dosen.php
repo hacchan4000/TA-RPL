@@ -1,4 +1,5 @@
 
+
 <?php 
 session_start(); // Start the session
 
@@ -160,13 +161,13 @@ if (isset($_SESSION['Nidn'])) {
                         foreach ($recentUpdate as $update): 
                         ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($student['Nama'] ?? 'N/A'); ?></td>
+                                <td><?php echo htmlspecialchars($students['Nama'] ?? 'N/A'); ?></td>
                                 <td><?php echo htmlspecialchars($update['NIM_MHS'] ?? 'N/A'); ?></td>
                                 <td><?php echo !empty($update['proposal']) ? 'Updated' : 'No Update'; ?></td>
+                                
                                 <td>
-                                <div class="form-group">
-                                    
-                                    <select id="progress" name="progress" required>
+                                <form method="POST" action="database/action.php">
+                                    <select name="progress" required>
                                         <option value="proposal">Proposal</option>
                                         <option value="progressAwal">Progres Awal</option>
                                         <option value="BAB1">BAB I</option>
@@ -175,18 +176,15 @@ if (isset($_SESSION['Nidn'])) {
                                         <option value="BAB4">BAB IV</option>
                                         <option value="BAB5">BAB V</option>
                                     </select>
-                                </div>
-
-                                </td>
-                                <td> 
-                                    <form action="database/action.php">
-                                        <button class="aksi" style=" background-color: rgb(250, 242, 193); border: 2px solid rgb(236, 206, 142); padding: 10px; border-radius: 10px">Review</button>
-                                        <button class="aksi" style="background-color: rgb(215, 247, 215); border: 2px solid rgb(142, 236, 142); padding: 10px; border-radius: 10px">Accept</button>
-                                        <button class="aksi" style="background-color: rgb(247, 215, 215); border: 2px solid rgb(236, 142, 142); padding: 10px; border-radius: 10px;">Revisi</button>
-                                        <button class="aksi" style="background-color: rgb(193, 224, 250); border: 2px solid rgb(142, 195, 236); padding: 10px; border-radius: 10px;" ondblclick="window.open('jadwal-bimbingan.html', '_blank');">Meet</button>
-                                    </form>
-                                    
-                                </td>
+                            </td>
+                            <td>
+                                    <input type="hidden" name="nim" value="<?php echo htmlspecialchars($update['NIM_MHS']); ?>">
+                                    <button type="submit" name="action" value="Review" class="aksi" style="background-color: rgb(250, 242, 193); border: 2px solid rgb(236, 206, 142); padding: 10px; border-radius: 10px;" >Review</button>
+                                    <button type="submit" name="action" value="Accept" class="aksi" style="background-color: rgb(215, 247, 215); border: 2px solid rgb(142, 236, 142); padding: 10px; border-radius: 10px;">Accept</button>
+                                    <button type="submit" name="action" value="Revisi" class="aksi" style="background-color: rgb(247, 215, 215); border: 2px solid rgb(236, 142, 142); padding: 10px; border-radius: 10px;" onclick="">Revisi</button>
+                                    <button type="submit" name="action" value="Meet" class="aksi" style="background-color: rgb(193, 224, 250); border: 2px solid rgb(142, 195, 236); padding: 10px; border-radius: 10px;" onclick="window.open('jadwal-bimbingan.html', '_blank');">Meet</button>
+                                </form>
+                            </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -220,6 +218,13 @@ if (isset($_SESSION['Nidn'])) {
                     </table>
                 </div>
             </div>
+        </div>
+
+        <div class="sub-revisi" style="width: 500px; height: 400px; background-color: pink; border-radius: 20px;">
+            
+        </div>
+        <div class="sub-meet">
+
         </div>
         </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
