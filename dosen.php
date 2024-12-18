@@ -220,11 +220,37 @@ if (isset($_SESSION['Nidn'])) {
             </div>
         </div>
 
-        <div class="sub-revisi" style="width: 500px; height: 400px; background-color: pink; border-radius: 20px;">
+        <div class="sub-revisi" style="width: 400px; height: 300px; background-color: pink; border-radius: 20px;">
+            <h1 style="padding: 20px; color: rgb(236, 142, 142);;">FORM REVISI</h1>
+            <form action="database/meet.php" method="POST">
+                <div class="form-group">
+                    <label for="judul-ta">Judul TA</label>
+                    <input type="text" id="judul-ta" name="judul-ta" placeholder="Masukkan judul Tugas Akhir Anda" required>
+                    <label for="desc-ta">Deskripsi</label>
+                    <input type="text" id="desc-ta" name="desc-ta" placeholder="Masukkan Deskripsi Tugas Anda" required>
+                    <div class="upload-area">
+                        <input type="file" id="file-upload" name="file-upload" style="display: none;" accept=".pdf" required>
+                        <label for="file-upload" style="cursor: pointer;">
+                            <img src="upload-icon.png" alt="Upload Icon">
+                            <p>Browse Files to upload</p>
+                        </label>
+                    </div>
+                </div>
+            </form>
             
         </div>
-        <div class="sub-meet">
-
+        <div class="sub-meet" style="width: 400px; height: 300px; background-color: rgb(193, 224, 250); border-radius: 20px;">
+            <h1 style="padding: 20px; color: rgb(142, 195, 236);;">FORM MEETING</h1>
+            <form action="database/revisi.php">
+                <div class="form-group">
+                    <label for="tanggal">Pilih Tanggal Bimbingan</label>
+                    <input type="date" id="tanggal" name="tanggal" required>
+                    <label for="msg">message</label>
+                    <input type="text" id="msg" name="msg">
+                    <button>SEND MEET REQUEST</button>
+                </div>
+            </form>
+            
         </div>
         </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
