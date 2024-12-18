@@ -220,37 +220,40 @@ if (isset($_SESSION['Nidn'])) {
             </div>
         </div>
 
-        <div class="sub-revisi" style="width: 400px; height: 300px; background-color: pink; border-radius: 20px;">
-            <h1 style="padding: 20px; color: rgb(236, 142, 142);;">FORM REVISI</h1>
-            <form action="database/meet.php" method="POST">
+        <div class="sub-revisi">
+            <h1>FORM REVISI</h1>
+            <form action="database/revisi.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="judul-ta">Judul TA</label>
                     <input type="text" id="judul-ta" name="judul-ta" placeholder="Masukkan judul Tugas Akhir Anda" required>
+
                     <label for="desc-ta">Deskripsi</label>
-                    <input type="text" id="desc-ta" name="desc-ta" placeholder="Masukkan Deskripsi Tugas Anda" required>
+                    <textarea id="desc-ta" name="desc-ta" placeholder="Masukkan Deskripsi Tugas Anda" required></textarea>
+
                     <div class="upload-area">
-                        <input type="file" id="file-upload" name="file-upload" style="display: none;" accept=".pdf" required>
-                        <label for="file-upload" style="cursor: pointer;">
-                            <img src="upload-icon.png" alt="Upload Icon">
-                            <p>Browse Files to upload</p>
-                        </label>
+                        <input type="file" id="file-upload" name="file-upload" accept=".pdf" required>
+                        <label for="file-upload">Upload File</label>
                     </div>
+
+                    <button type="submit">Submit</button>
                 </div>
             </form>
-            
         </div>
-        <div class="sub-meet" style="width: 400px; height: 300px; background-color: rgb(193, 224, 250); border-radius: 20px;">
-            <h1 style="padding: 20px; color: rgb(142, 195, 236);;">FORM MEETING</h1>
-            <form action="database/revisi.php">
+
+        <!-- Form Meeting -->
+        <div class="sub-meet">
+            <h1>FORM MEETING</h1>
+            <form action="database/meet.php" method="POST">
                 <div class="form-group">
                     <label for="tanggal">Pilih Tanggal Bimbingan</label>
                     <input type="date" id="tanggal" name="tanggal" required>
-                    <label for="msg">message</label>
-                    <input type="text" id="msg" name="msg">
-                    <button>SEND MEET REQUEST</button>
+
+                    <label for="msg">Pesan</label>
+                    <textarea id="msg" name="msg" placeholder="Tambahkan pesan..."></textarea>
+
+                    <button type="submit">Kirim Permintaan</button>
                 </div>
             </form>
-            
         </div>
         </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
