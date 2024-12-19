@@ -40,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssssiss", $telpon, $alamat, $fakultas, $jurusan, $semester, $dosbing, $nim);
 
         if ($stmt->execute()) {
-            echo "Profile information updated successfully.";
+            header("Location: ../profil.php");
+
         } else {
             echo "Error updating profile information: " . $stmt->error;
         }

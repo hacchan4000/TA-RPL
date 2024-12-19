@@ -138,8 +138,22 @@ th,td{
     color: rgb(236, 142, 142);
     width: 400px;
     height: auto;
+    
+    display: none; /* Hide the form initially */
+    position: fixed;
+    top: -100%; /* Place it above the viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.5s ease-in-out; /* Smooth sliding effect */
+    z-index: 1000;
 }
-
+.sub-revisi.show {
+    display: block;
+    top: 20%; /* Adjust as needed to position the form in view */
+}
 .sub-meet {
     background-color: rgb(193, 224, 250);
     color: rgb(142, 195, 236);
@@ -198,8 +212,7 @@ th,td{
 
 button {
     background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+   
     border: none;
     border-radius: 5px;
     font-size: 14px;
