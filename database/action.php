@@ -62,9 +62,9 @@ if (isset($_SESSION['Nidn'])) {
                 $timestamp = date("Y-m-d H:i:s");
 
                 $notificationMessage = match ($action) {
-                    'Accept' => "Your submission has been accepted.",
-                    'Revisi' => "Your submission requires revision.",
-                    'Meet' => "You are requested to attend a meeting.",
+                    'Accept' => "approved",
+                    'Revisi' => "revision",
+                    'Meet' => "meeting",
                     default => ''
                 };
 
