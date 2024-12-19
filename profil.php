@@ -23,6 +23,18 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    $stmt2 = $conn->prepare("SELECT verif FROM mahasiswa WHERE Nim = ?");
+    $stmt2->bind_param("s", $nim);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+
+    if ($result2->num_rows > 0) {
+        $row2 = $result2->fetch_assoc();
+        $verif = $row2['verif'];
+    } else {
+        $verif = 0; // Default to 0 if no result found
+    }
+
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $gambar = $row['gambar'];
@@ -78,15 +90,16 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-    <header class="mainHeader"> 
-        <nav class="navigasi-mm">
-            <a href="pengumpulan.html">PENGUMPULAN TA</a>
-            <a href="status.html">STATUS TA</a>
-            <a href="main-menu.php">HOME</a>
-             <!---<a href="#">CONTACTS</a> -->
-        </nav>
-        <a class="profil" href="login.php"><ion-icon name="log-out-outline"></ion-icon></a>
-    </header>
+    <?php if ($verif == 1){ ?>
+        <header class="mainHeader"> 
+            <nav class="navigasi-mm">
+                <a href="pengumpulan.html">PENGUMPULAN TA</a>
+                <a href="status.html">STATUS TA</a>
+                <a href="main-menu.php">HOME</a>
+            </nav>
+            <a class="profil" href="login.php"><ion-icon name="log-out-outline"></ion-icon></a>
+        </header>
+    <?php } ?>
 
     <div class="main-body">
         <div class="overlay"></div>
@@ -108,16 +121,18 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
             </div>
 
             <div class="verifikasi">
-                <form action="update.php"></form>
-                <h1 style="font-weight: bold;">VERIFIKASI</h1>
-                untuk mengkases layanan MONITA, mohon penuhi syarat pengajuan proposal TA berikut:
-                <ul>1.⁠ ⁠Telah mengambil dan lulus mata kuliah sebanyak 100 SKS, dengan menyertakan bukti KHS terakhir. </ul>
-                <input type="file" name="verif1" id="verif1">
-                <ul>2.⁠ ⁠Telah mengikuti Workshop Tugas Akhir, dengan menyertakan bukti Sertifikat Workshop Tugas Akhir.</ul>
-                <input type="file"  name="verif2" id="verif2">
-                <ul>3.⁠ ⁠Telah menjual jiwa ke iblis .</ul>
-                <input type="file"  name="verif3" id="verif3">
-                <button style="margin: 10px;">Submit</button>
+                <form action="database/update.php" method="POST" enctype="multipart/form-data">
+                    <h1 style="font-weight: bold;">VERIFIKASI</h1>
+                    untuk mengkases layanan MONITA, mohon penuhi syarat pengajuan proposal TA berikut:
+                    <ul>1.⁠ ⁠Telah mengambil dan lulus mata kuliah sebanyak 100 SKS, dengan menyertakan bukti KHS terakhir. </ul>
+                    <input type="file" name="verif1" id="verif1">
+                    <ul>2.⁠ ⁠Telah mengikuti Workshop Tugas Akhir, dengan menyertakan bukti Sertifikat Workshop Tugas Akhir.</ul>
+                    <input type="file"  name="verif2" id="verif2">
+                    <ul>3.⁠ ⁠Telah menjual jiwa ke iblis .</ul>
+                    <input type="file"  name="verif3" id="verif3">
+                    <button style="margin: 10px;">Submit</button>
+                </form>
+                
             </div>
         </div>
         

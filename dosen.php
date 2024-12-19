@@ -23,6 +23,7 @@ if (isset($_SESSION['Nidn'])) {
     }
 
     // Fetching NIMs associated with the lecturer (NIDN)
+    $showRevisiForm = isset($_GET['revisi-form']);
     $nimList = [];
     $query1 = "SELECT NIM FROM Bimbingan WHERE NIDN = '$NIDN'";
     $result1 = $conn->query($query1);
@@ -85,6 +86,248 @@ if (isset($_SESSION['Nidn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dosen</title>
     <link rel="stylesheet" href="styles/pages/dosen.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(0, 0, 0);
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    font-weight: 30px;
+    background-color: rgba(0, 0, 0, 0.778);  
+}
+
+.profil {
+    position: absolute; /* Allow precise positioning */
+    top: 20px; /* Adjust the vertical position */
+    right: 20px; /* Adjust the horizontal position */
+    color: white; /* Ensure the text/icon is visible */
+    font-size: 1.5em; /* Adjust the size if necessary */
+    text-decoration: none; /* Remove underline from the link */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+.navigasi-mm{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none;
+}
+.navigasi-mm a{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
+    margin-left: 90px;
+    text-decoration: none;
+}
+body{
+    background: #eae9e9;
+}
+.container .content{
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+}
+.container .content .cards{
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container .content .cards .card{
+    width: 250px;
+    height: 150px;
+    background: rgb(255, 255, 255);
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+h3{
+    color: #999;
+}
+.container .content .content-2{
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.container .content .content-2 .recent-update{
+    min-height: 50vh;
+    flex: 5;
+    background: rgb(255, 255, 255);
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+.container .content .content-2 .new-students{
+    flex: 2;
+    background: rgb(255, 255, 255);
+    min-height: 50vh;
+    margin: 0 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 10px;
+    border-bottom: 2px solid #999;
+}
+table{
+    padding: 10px;
+}
+th,td{
+    text-align: left;
+    padding: 8px;
+}
+.aksi{
+    padding: 20px;
+    border: none;
+}
+
+
+/* Forms */
+.sub-revisi,
+.sub-meet {
+    display: inline-block;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sub-revisi {
+    background-color: pink;
+    color: rgb(236, 142, 142);
+    width: 400px;
+    height: auto;
+    
+    display: none; /* Hide the form initially */
+    position: fixed;
+    top: -100%; /* Place it above the viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.5s ease-in-out; /* Smooth sliding effect */
+    z-index: 1000;
+}
+.sub-revisi.show {
+    display: block;
+    top: 20%; /* Adjust as needed to position the form in view */
+}
+.sub-meet {
+    background-color: rgb(193, 224, 250);
+    color: rgb(142, 195, 236);
+    width: 400px;
+    height: auto;
+
+    display: none; /* Hide the form initially */
+    position: fixed;
+    top: -100%; /* Place it above the viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.5s ease-in-out; /* Smooth sliding effect */
+    z-index: 1000;
+}
+
+.sub-meet.show {
+    display: block;
+    top: 20%; /* Adjust as needed to position the form in view */
+}
+
+.sub-revisi h1,
+.sub-meet h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.upload-area img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    font-size: 14px;
+    color: #666;
+}
+
+button {
+    background-color: #007bff;
+   
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    </style>
 </head>
 </body>
     
@@ -182,7 +425,7 @@ if (isset($_SESSION['Nidn'])) {
                                     <button type="submit" name="action" value="Review" class="aksi" style="background-color: rgb(250, 242, 193); border: 2px solid rgb(236, 206, 142); padding: 10px; border-radius: 10px;" >Review</button>
                                     <button type="submit" name="action" value="Accept" class="aksi" style="background-color: rgb(215, 247, 215); border: 2px solid rgb(142, 236, 142); padding: 10px; border-radius: 10px;">Accept</button>
                                     <button type="submit" name="action" value="Revisi" class="aksi" style="background-color: rgb(247, 215, 215); border: 2px solid rgb(236, 142, 142); padding: 10px; border-radius: 10px;" onclick="">Revisi</button>
-                                    <button type="submit" name="action" value="Meet" class="aksi" style="background-color: rgb(193, 224, 250); border: 2px solid rgb(142, 195, 236); padding: 10px; border-radius: 10px;" onclick="window.open('jadwal-bimbingan.html', '_blank');">Meet</button>
+                                    <button type="submit" name="action" value="Meet" class="aksi" style="background-color: rgb(193, 224, 250); border: 2px solid rgb(142, 195, 236); padding: 10px; border-radius: 10px;" onclick="">Meet</button>
                                 </form>
                             </td>
                             </tr>
@@ -220,16 +463,74 @@ if (isset($_SESSION['Nidn'])) {
             </div>
         </div>
 
-        <div class="sub-revisi" style="width: 500px; height: 400px; background-color: pink; border-radius: 20px;">
+        <div class="sub-revisi <?php echo $showRevisiForm ? 'show' : ''; ?>">
             
-        </div>
-        <div class="sub-meet">
+            <h1>FORM REVISI</h1>
+            <form action="database/revisi.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="hidden" name="nim" value="<?php echo htmlspecialchars($update['NIM_MHS']); ?>">
+                    <label for="judul-ta">Judul TA</label>
+                    <input type="text" id="judul-ta" name="judul-ta" placeholder="Masukkan judul Tugas Akhir Anda" required>
 
+                    <label for="desc-ta">Deskripsi</label>
+                    <textarea id="desc-ta" name="desc-ta" placeholder="Masukkan Deskripsi Tugas Anda" required></textarea>
+
+                    <div class="upload-area">
+                        <input type="file" id="file-upload" name="file-upload" accept=".pdf" required>
+                        <label for="file-upload">Upload File</label>
+                    </div>
+
+                    <button type="submit">Submit</button>
+                   
+                </div>
+            </form>
+        </div>
+
+        <!-- Form Meeting -->
+        <div class="sub-meet">
+            <h1>FORM MEETING</h1>
+            <form action="database/meet.php" method="POST">
+                <div class="form-group">
+                    <label for="tanggal">Pilih Tanggal Bimbingan</label>
+                    <input type="date" id="tanggal" name="tanggal" required>
+
+                    <label for="msg">Pesan</label>
+                    <textarea id="msg" name="msg" placeholder="Tambahkan pesan..."></textarea>
+
+                    <button type="submit">Kirim Permintaan</button>
+                </div>
+            </form>
         </div>
         </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const revisiButton = document.querySelectorAll("button[value='Revisi']");
+            const meetButton = document.querySelectorAll("button[value='Meet']");
+            const revisiForm = document.querySelector(".sub-revisi");
+            const meetForm = document.querySelector(".sub-meet");
+
+            revisiButton.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    revisiForm.classList.toggle("show");
+                });
+            });
+
+            meetButton.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    meetForm.classList.toggle("show");
+                });
+            });
+    });
+
+    </script>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
    
 </body>
 </html>
+
+
+

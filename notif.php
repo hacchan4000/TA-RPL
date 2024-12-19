@@ -43,12 +43,207 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     <link rel="stylesheet" href="styles/pages/notif.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
+}
+
+/* Header Styles */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    font-weight: 30px;
+    background-color: rgba(0, 0, 0, 0.778);
+}
+.navigation{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none;
+}
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-size: 500;
+    font-weight: 500;
+    margin-left: 90px;
+    text-decoration: none;
+}
+
+.profile {
+    color: white;
+    font-size: 1.5em;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 50px 0 20px;
+    color: black;
+    padding-top: 50px;
+}
+
+/* Table Header */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+ 
+    margin-bottom: 10px;
+    color: black;
+    font-size: 130px;
+    font-weight: bold;
+    text-align: left; /* Aligns the text to the left */
+}
+.table-header h5 {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Notifications */
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    transform: translateX(200px);
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 900px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification img.notif-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.notification .notif-info {
+    flex: 1;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.notification .notif-message {
+    flex: 2;
+    margin: 0 20px;
+}
+
+.notification .notif-event {
+    flex: 1;
+    text-align: right;
+}
+
+.notification img.notif-status-icon {
+    width: 90px;
+    height: 90px;
+}
+
+.notification {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.notification-submitted {
+    background-color: #fff9c4;
+}
+.notification-revision {
+    background-color: #ffccbc;
+}
+.notification-approved {
+    background-color: #c8e6c9;
+}
+.notification-meeting {
+    background-color: #bbdefb;
+}
+
+
+/* Notification Types */
+.notification-approved {
+    background-color: rgb(215, 247, 215);
+    border: 2px solid rgb(142, 236, 142);
+}
+
+.notification-revision {
+    background-color: rgb(247, 215, 215);
+    border: 2px solid rgb(236, 142, 142);
+}
+
+.notification .notification-submitted {
+    background-color: rgb(250, 242, 193);
+    border: 2px solid rgb(236, 206, 142);
+}
+
+.notification-meeting {
+    background-color: rgb(193, 224, 250);
+    border: 2px solid rgb(142, 195, 236);
+}
+
+/* Event Styles */
+.resolved {
+    color: green;
+}
+
+.revision {
+    color: red;
+}
+
+.submitted {
+    color: orange;
+}
+
+.reminder {
+    color: rgb(0, 179, 255);
+}
+h2{
+    font-weight: bold;
+}
+
+    </style>
 </head>
 <body>
     <header class="main-header">
         <nav class="navigation">
             <a href="pengumpulan.html">PENGUMPULAN TA</a>
-            <a href="status.html">STATUS TA</a>
+            <a href="status.php">STATUS TA</a>
             <a href="main-menu.php">HOME</a>
         </nav>
         <a class="profile" href="profil.php"><ion-icon name="person-circle-outline"></ion-icon></a>

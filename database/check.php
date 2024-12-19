@@ -36,9 +36,17 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
                     // Set session variables based on user role
                     if ($role === 'student') {
-                        $_SESSION['Nim'] = $data['Nim'];
-                        $_SESSION['Username'] = $data['Username'];
-                        header("Location: ../main-menu.php");
+                        //check apakah kolom verif di tabel mahasiswa bernilai 0 
+                        if ($data['verif'] == 1) {
+                            $_SESSION['Nim'] = $data['Nim'];
+                            $_SESSION['Username'] = $data['Username'];
+                            header("Location: ../main-menu.php");
+                        } else {
+                            $_SESSION['Nim'] = $data['Nim'];
+                            $_SESSION['Username'] = $data['Username'];
+                            header("Location: ../profil.php");
+                        }
+                       
                     } elseif ($role === 'lecturer') {
                         $_SESSION['Nidn'] = $data['NIDN'];
                         $_SESSION['Username'] = $data['Username'];

@@ -58,15 +58,15 @@ if (isset($_SESSION['Nidn'])) {
             case 'Revisi':
                 
             case 'Meet':
-                // Insert notification for action
-                $notificationMessage = match ($action) {
-                    'Accept' => 'approved',
-                    'Revisi' => 'revision',
-                    'Meet' => 'meeting',
-                    default => '',
-                };
                 $source = "Assignment Submission";
                 $timestamp = date("Y-m-d H:i:s");
+
+                $notificationMessage = match ($action) {
+                    'Accept' => "approved",
+                    'Revisi' => "revision",
+                    'Meet' => "meeting",
+                    default => ''
+                };
 
                 $notifQuery = "INSERT INTO Notifications (nim, message, source, timestamp) VALUES (?, ?, ?, ?)";
                 $notifStmt = $conn->prepare($notifQuery);
@@ -74,7 +74,11 @@ if (isset($_SESSION['Nidn'])) {
                 if ($notifStmt) {
                     $notifStmt->bind_param("ssss", $nim, $notificationMessage, $source, $timestamp);
                     if ($notifStmt->execute()) {
-                        echo ucfirst($action) . " notification sent successfully.";
+                        if ($action === 'Revisi') {
+                            header("Location: ../dosen.php?revisi-form");
+                            exit; // Ensure no further code is executed
+                        }
+                        echo "Notification sent successfully.";
                     } else {
                         echo "Failed to send notification: " . $notifStmt->error;
                     }
