@@ -182,13 +182,13 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     margin: 10px 0;
     border-radius: 5px;
 }
-.notification-pending {
+.notification-submitted {
     background-color: #fff9c4;
 }
 .notification-revision {
     background-color: #ffccbc;
 }
-.notification-approval {
+.notification-approved {
     background-color: #c8e6c9;
 }
 .notification-meeting {
@@ -197,7 +197,7 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
 
 
 /* Notification Types */
-.notification-approval {
+.notification-approved {
     background-color: rgb(215, 247, 215);
     border: 2px solid rgb(142, 236, 142);
 }
@@ -207,7 +207,7 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     border: 2px solid rgb(236, 142, 142);
 }
 
-.notification .notification-pending {
+.notification .notification-submitted {
     background-color: rgb(250, 242, 193);
     border: 2px solid rgb(236, 206, 142);
 }
@@ -226,7 +226,7 @@ if (isset($_SESSION['Username']) && isset($_SESSION['Nim'])) {
     color: red;
 }
 
-.reviewing {
+.submitted {
     color: orange;
 }
 
@@ -243,7 +243,7 @@ h2{
     <header class="main-header">
         <nav class="navigation">
             <a href="pengumpulan.html">PENGUMPULAN TA</a>
-            <a href="status.html">STATUS TA</a>
+            <a href="status.php">STATUS TA</a>
             <a href="main-menu.php">HOME</a>
         </nav>
         <a class="profile" href="profil.php"><ion-icon name="person-circle-outline"></ion-icon></a>
