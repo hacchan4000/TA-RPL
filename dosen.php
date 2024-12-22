@@ -340,7 +340,7 @@ button:hover {
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1>21894</h1>
+                        <h1><?php echo count($students); ?></h1>
                         <h3>Students</h3>
                     </div>
                     <div class="icon-case">

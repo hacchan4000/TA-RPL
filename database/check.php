@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         $_SESSION['Nidn'] = $data['NIDN'];
                         $_SESSION['Username'] = $data['Username'];
                         header("Location: ../dosen.php");
+
                     } elseif ($role === 'admin') {
                         $_SESSION['id'] = $data['id'];
                         $_SESSION['Username'] = $data['Username'];
@@ -75,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if (!$errorMessage) {
             // Check admin login
-            $errorMessage = checkUser($conn, "SELECT * FROM Admin WHERE id = ?", $nim, 'admin');
+            $errorMessage = checkUser($conn, "SELECT * FROM myAdmin WHERE id = ?", $nim, 'admin');
         }
 
         $conn->close();
