@@ -331,16 +331,7 @@ button:hover {
 </head>
 </body>
     
-    <header> 
-        <nav class="navigasi-mm">
-            <a href="jadwal-bimbingan.html">Jadwal Bimbingan</a>
-            <a href="notif.html">NOTIFICATION</a>
-            <a href="#">CONTACTS</a>
-            
-        </nav>
-       
-       
-    </header> 
+ 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -425,7 +416,6 @@ button:hover {
                                     <button type="submit" name="action" value="Review" class="aksi" style="background-color: rgb(250, 242, 193); border: 2px solid rgb(236, 206, 142); padding: 10px; border-radius: 10px;" >Review</button>
                                     <button type="submit" name="action" value="Accept" class="aksi" style="background-color: rgb(215, 247, 215); border: 2px solid rgb(142, 236, 142); padding: 10px; border-radius: 10px;">Accept</button>
                                     <button type="submit" name="action" value="Revisi" class="aksi" style="background-color: rgb(247, 215, 215); border: 2px solid rgb(236, 142, 142); padding: 10px; border-radius: 10px;" onclick="">Revisi</button>
-                                    <button type="submit" name="action" value="Meet" class="aksi" style="background-color: rgb(193, 224, 250); border: 2px solid rgb(142, 195, 236); padding: 10px; border-radius: 10px;" onclick="">Meet</button>
                                 </form>
                             </td>
                             </tr>
