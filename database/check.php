@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     } elseif ($role === 'admin') {
                         $_SESSION['id'] = $data['id'];
                         $_SESSION['Username'] = $data['Username'];
-                        header("Location: ../admin.html");
+                        header("Location: ../admin.php");
                     }
 
                     $stmt->close();
