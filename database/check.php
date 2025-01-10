@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//cek poin
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $nim = $_POST['myNim'];
     $pass = $_POST['myPassword'];
