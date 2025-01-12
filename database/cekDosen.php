@@ -36,23 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     $_SESSION['role'] = $role;
 
                     // Set session variables based on user role
-                    if ($role === 'student') {
-                        //check apakah kolom verif di tabel mahasiswa bernilai 0 
-                        if ($data['verif'] == 1) {
-                            $_SESSION['Nim'] = $data['Nim'];
-                            $_SESSION['Username'] = $data['Username'];
-                            header("Location: ../main-menu.php");
-                        } else {
-                            $_SESSION['Nim'] = $data['Nim'];
-                            $_SESSION['Username'] = $data['Username'];
-                            header("Location: ../profil.php");
-                        }
-
-                    } elseif ($role === 'admin') {
-                        $_SESSION['id'] = $data['id'];
+                    if ($role === 'lecturer') {
+                        $_SESSION['Nidn'] = $data['NIDN'];
                         $_SESSION['Username'] = $data['Username'];
-                        header("Location: ../admin.php");
-                    }
+                        header("Location: ../dosen.php");
+                       
+                    } 
 
                     $stmt->close();
                     exit();
@@ -65,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
 
         // Check student login
-        $errorMessage = checkUser($conn, "SELECT * FROM mahasiswa WHERE Nim = ?", $nim, 'student');
-        
+       
         if (!$errorMessage) {
-            // Check admin login
-            $errorMessage = checkUser($conn, "SELECT * FROM myAdmin WHERE id = ?", $nim, 'admin');
+            // Check lecturer login
+            $errorMessage = checkUser($conn, "SELECT * FROM Dosen WHERE NIDN = ?", $nim, 'lecturer');
         }
+       
 
         $conn->close();
 

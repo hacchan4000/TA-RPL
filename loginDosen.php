@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Dosen</title>
+    <!-- dibawah ini dua file buat css -->
+    <link rel="stylesheet" href="styles/shared/login-header.css">
+    <link rel="stylesheet" href="styles/shared/body-login.css">
+
+    
+    
+</head>
+
+<body>
+   <header>
+    <img class="logo-unud" src="gambar/background/newUnud.jpg" alt="">
+    <nav class="navigasi">
+   
+    </nav>
+
+   </header>
+
+    <!-- berikut komponen" utama di halaman login mulai dari kotak/container login dan sign up -->
+    <!-- inget div itu kaya bungkus, jd setiap kita mau bikin objek baru dalam web kita bungkus dengan div dlu trs div tsbt dikasi atribut class biar bsa kita edit" di css -->
+    <div class="main">
+
+        <!-- container kotak login -->
+        <div class="form-box login">
+            <h1>LOGIN</h1>
+            <form action="database/cekDosen.php" method="POST"> <!-- form itu buat kalo tar klik tombol login ganti halaman ke halaman main-menu -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" placeholder="" required name="myNim" id="myNim">
+                    <label>NIDN</label>
+                </div>
+
+               
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="" required name="myPassword">
+                    <label>password</label>
+                </div>
+
+                <div class="error-box" style="font-weight: bold;">
+                    <p ><?php if (isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?></p>
+                </div>
+
+                <div class="inget-pass">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#"> forgot password?</a>
+                </div>
+                
+                
+                <button type="submit" class="tombol-submit">Login</button>
+            </form>
+        </div>
+
+
+
+        <!-- container kotak sign-up -->
+       
+        
+    </div>
+
+
+
+    <script src="scripts/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
+
+
