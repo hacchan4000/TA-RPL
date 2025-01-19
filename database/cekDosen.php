@@ -65,18 +65,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         // If no user found
         if ($errorMessage) {
-            header("Location: ../login.php?error=" . urlencode($errorMessage));
+            header("Location: ../loginDosen.php?error=" . urlencode($errorMessage));
         } else {
-            header("Location: ../login.php?error=" . urlencode("Akun tidak ditemukan."));
+            header("Location: ../loginDosen.php?error=" . urlencode("Akun tidak ditemukan."));
         }
         exit();
     } else {
         $errorMessage = "Harap masukkan NIM dan password.";
-        header("Location: ../login.php?error=" . urlencode($errorMessage));
+        header("Location: ../loginDosen.php?error=" . urlencode($errorMessage));
         exit();
     }
 } else {
-    header("Location: ../login.php");
+    header("Location: ../loginDosen.php");
     exit();
 }
 ?>
